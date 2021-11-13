@@ -1,0 +1,52 @@
+.fondo {
+  text-align: center;
+  background-image: url("../../../assets/buenosAiresNoche.jpg");
+  background-size: 100% 100%;
+  background-blend-mode: color-burn;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+}
+.contenedorLogin {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.946);
+  max-width: 20vw;
+  min-height: 70vh;
+  text-align: center;
+  margin: 15vh auto;
+  padding: 1%;
+  position: static;
+}
+.inputs {
+  border: 0;
+  max-width: 80%;
+  min-width: 80%;
+  background: transparent;
+  border-bottom: 0.3vh solid rgb(196, 196, 196);
+  margin: 4% 0% 4% -0.5%;
+  padding: 2% 2%;
+  outline: none;
+  font-size: calc(0.1em + 1vw);
+}
+.inputs:focus {
+  border-bottom: 2px solid rgb(22, 84, 216);
+}
+.btnIngresar {
+  margin: 30% 10% 5% 10%;
+  padding: 2% 10%;
+  background: rgb(22, 84, 216);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: calc(0.1em + 1vw);
+}
+.btnIngresar:hover {
+  background: rgba(22, 83, 216, 0.878);
+}
+img {
+  max-width: 20vw;
+  min-width: 20vw;
+  margin: 3% 0;
+}
