@@ -1,11 +1,76 @@
-<link rel="stylesheet" href="./login.component.css">
+<link rel="stylesheet" href="./login.component.css" />
 <div class="fondo">
-<div class="contenedorLogin">
-    <img src="../../../assets/suda_Mesa de trabajo 1 copia 3.png">
-        <input type="text" class="inputs" name="user" placeholder="Usuario">
-        <input type="password" class="inputs" name="pass" placeholder="Contraseña">
-    
-    <button class="btnIngresar" routerLink="/PanelAdministrador" routerLinkActive="active">INICIAR SESIÓN</button>
-</div>
-</div>
+  <div class="contenedorLogin">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <img src="../../../assets/suda_Mesa de trabajo 1 copia 3.png" />
+      <input
+        [formControl]="username"
+        type="text"
+        class="inputs"
+        name="username"
+        placeholder="Usuario"
+      />
 
+      <div
+        class="
+          px-4
+          py-2
+          my-2
+          text-red-700
+          bg-red-100
+          border border-red-400
+          rounded
+        "
+        role="alert"
+        *ngIf="username.touched && username.errors?.required"
+      >
+        <strong class="font-bold">Debe ingresar un usuario.</strong>
+      </div>
+      <div
+        class="
+          px-4
+          py-2
+          my-2
+          text-red-700
+          bg-red-100
+          border border-red-400
+          rounded
+        "
+        role="alert"
+        *ngIf="username.touched && username.errors?.maxlength"
+      >
+        <strong class="font-bold">
+          El usuario debe tener 18 caracteres como máximo.
+        </strong>
+      </div>
+
+      <input
+        [formControl]="password"
+        type="password"
+        class="inputs"
+        name="pass"
+        placeholder="Contraseña"
+      />
+      <div
+        class="
+          px-4
+          py-2
+          my-2
+          text-red-700
+          bg-red-100
+          border border-red-400
+          rounded
+        "
+        role="alert"
+        *ngIf="password.touched && password.errors?.required"
+      >
+        <strong class="font-bold"> Debe ingresar su contraseña. </strong>
+      </div>
+      <button type="submit" class="btnIngresar">
+        <!-- routerLinkActive="active" -->
+        <!-- routerLink="/PanelAdministrador" -->
+        INICIAR SESIÓN
+      </button>
+    </form>
+  </div>
+</div>
