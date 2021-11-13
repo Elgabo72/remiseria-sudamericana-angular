@@ -3,10 +3,7 @@
   <div class="contenedorLogin">
     <form [formGroup]="form" (ngSubmit)="submit()">
       <img src="../../../assets/suda_Mesa de trabajo 1 copia 3.png" />
-      <input
-        [formControl]="username"
-        type="text"
-        class="inputs"
+      <input [formControl]="username" type="text"git   class="inputs"
         name="username"
         placeholder="Usuario"
       />
@@ -40,7 +37,7 @@
         *ngIf="username.touched && username.errors?.maxlength"
       >
         <strong class="font-bold">
-          El usuario debe tener 18 caracteres como máximo 987456321.
+          El usuario debe tener 18 caracteres como máximo Prueba de cambio.
         </strong>
       </div>
 
