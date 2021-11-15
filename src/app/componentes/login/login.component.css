@@ -51,6 +51,17 @@ img {
   display: block;
   margin: 1% auto;
 }
+.alertaError {
+  color: rgb(196, 5, 5);
+  font-size: calc(0.6vh + 0.6vw);
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  max-width: 80%;
+  min-width: 80%;
+  margin: auto;
+  padding: 2%;
+  font-style: italic;
+}
 @media only screen and (min-width: 200px) and (max-width: 550px) and (max-height: 850px) {
   .contenedorLogin {
     border: none;
@@ -72,6 +83,7 @@ img {
     margin: 15% 10% 5% 10%;
   }
 }
+
 @media only screen and (min-width: 700px) and (max-width: 1200px) and (min-height: 1000px) {
   .contenedorLogin {
     border: none;
