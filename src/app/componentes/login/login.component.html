@@ -5,10 +5,10 @@
       <img src="../../../assets/suda_Mesa de trabajo 1 copia 3.png" />
       <input [formControl]="username" type="text"git   class="inputs" name="username" placeholder="Usuario"/>
       <div class="alertaError" role="alert" *ngIf="username.touched && username.errors?.required">
-        <strong class="font-bold">* Debe ingresar un usuario.</strong>
+        <strong>* Debe ingresar un usuario.</strong>
       </div>
-      <div class="px-4 py-2 my-2 text-red-700 bg-red-100 border border-red-400 rounded" role="alert" *ngIf="username.touched && username.errors?.maxlength">
-        <strong class="font-bold">
+      <div class="alertaError" role="alert" *ngIf="username.touched && username.errors?.maxlength">
+        <strong>
           * El usuario debe tener 18 caracteres como máximo Prueba de cambio.
         </strong>
       </div>
@@ -16,6 +16,8 @@
       <input [formControl]="password" type="password" class="inputs" name="pass" placeholder="Contraseña"/>
       <div class="alertaError" role="alert" *ngIf="password.touched && password.errors?.required">
         <strong>* Debe ingresar su contraseña. </strong>
+      </div>
+      <div class="alertaError" [innerHTML]="logeoFallido">
       </div>
       <button type="submit" class="btnIngresar">
         <!-- routerLinkActive="active" -->
