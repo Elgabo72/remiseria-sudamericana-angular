@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthControllerService } from 'src/app/core/api/services/auth-controller.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private service: AuthControllerService,
+    private service: AuthControllerService, private router:Router
   ) {
     this.username = new FormControl('', [
       Validators.required,
@@ -32,11 +33,10 @@ export class LoginComponent implements OnInit {
       password: this.password,
     });
   }
-
+  logeoFallido =""
   ngOnInit(): void {
   }
-
-
+  
   submit(): void {
     this.service
       .createTokenUsingPOSTResponse({
@@ -45,9 +45,11 @@ export class LoginComponent implements OnInit {
       })
       .subscribe(
         (res) => {
+          this.router.navigate(['/PanelAdministrador'])
           console.log(res)
         },
         (err) => {
+          this.logeoFallido='<strong style="margin-top:15px">* Usuario o contraseña incorrecta</strong>';
           console.log(err);
         }
       );
