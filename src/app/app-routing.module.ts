@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './presentation/pages/login/login.component';
-import { PanelAdminComponent } from './presentation/pages/panel-admin/panel-admin.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
 
 const routes: Routes = [
-  { path: "", redirectTo: "Login", pathMatch: "full" },
-  { path: "Login", component: LoginComponent },
-  { path: "PanelAdministrador", component: PanelAdminComponent }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./presentation/pages/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'remiseria',
+    // canActivate: [AdminGuard],
+    loadChildren: () =>
+      import('./presentation/pages/admin/admin.module').then((m) => m.AdminModule),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

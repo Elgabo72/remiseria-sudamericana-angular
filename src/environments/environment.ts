@@ -1,9 +1,19 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+const prod = false;
+const urlDomainProduction = 'https://spring.luismeramosr.ml';
+const urlDomainDev = 'http://localhost:8080';
+const urlDomain = prod ? urlDomainProduction : urlDomainDev;
 export const environment = {
-  production: false
+  production: true,
+  apiURL: urlDomain,
+  url_api: 'https://platzi-store.herokuapp.com',
+  url_client_images: `${urlDomain}/uploads/photos-clients/`,
+  url_voucher_images: `${urlDomain}/uploads/vouchers/`,
+  url_products_images: `${urlDomain}/uploads/products/thumbnails/`,
+  url_productos_other_images: `${urlDomain}/uploads/products/product-images/`,
+  url_product_not_found: 'https://www.w4ter.co.za/error.png',
 };
 
 /*
