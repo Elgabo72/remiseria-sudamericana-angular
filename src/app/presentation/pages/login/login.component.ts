@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { LoginService } from '../../auth/login.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private service: AuthControllerService, private router:Router
+    private loginService: LoginService,
+    private service: AuthControllerService, private router: Router
   ) {
     this.username = new FormControl('', [
       Validators.required,
@@ -34,10 +36,10 @@ export class LoginComponent implements OnInit {
       password: this.password,
     });
   }
-  logeoFallido =""
+  logeoFallido = ""
   ngOnInit(): void {
   }
-  
+
   submit(): void {
     this.service
       .createTokenUsingPOSTResponse({
@@ -46,11 +48,15 @@ export class LoginComponent implements OnInit {
       })
       .subscribe(
         (res) => {
-          this.router.navigate(['/PanelAdministrador'])
           console.log(res)
+          if (res.status == 200) {
+            this.loginService.saveJWT(res.body.jwt ?? "", res.body.user ?? {});
+            this.router.navigate(['/remiseria/dashboard'])
+          };
+
         },
         (err) => {
-          this.logeoFallido='<strong style="margin-top:15px">* Usuario o contraseña incorrecta</strong>';
+          this.logeoFallido = '<strong style="margin-top:15px">* Usuario o contraseña incorrecta</strong>';
           console.log(err);
         }
       );
