@@ -1,0 +1,121 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>
+      
+    </mat-toolbar>
+    <div class="admin-name">
+      <span class="unselectable capitalize" style="font-family: Roboto">{{
+        user.username
+      }}</span>
+    </div>
+    <mat-horizontal-stepper class="separator"> </mat-horizontal-stepper>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/admin/dashboard">
+        <div class="flex flex-col m-auto">
+          <span class="material-icons icon"> desktop_windows </span>
+          <span class="text-sm text-center text-white">Dashboard</span>
+        </div>
+      </a>
+      <a mat-list-item routerLink="/admin/orders">
+        <div class="flex flex-col m-auto">
+          <span class="material-icons icon"> shopping_bag </span>
+          <span class="text-sm text-center text-white">Pedidos</span>
+        </div>
+      </a>
+      <a mat-list-item class="img-hover unselectable">
+        <div class="flex flex-col m-auto">
+          <span class="material-icons icon"> build </span>
+          <span class="text-sm text-center text-white">Mantenimientos</span>
+        </div>
+        <div class="hover-popup">
+          <a mat-list-item routerLink="/admin/categorys">
+            <div class="flex flex-col m-auto">
+              <span class="material-icons icon"> category </span>
+              <span class="text-sm text-center text-white">Categorias</span>
+            </div>
+          </a>
+          <a mat-list-item routerLink="/admin/products">
+            <div class="flex flex-col m-auto">
+              <i class="fas fa-shoe-prints icon"></i>
+              <span class="text-sm text-center text-white">Productos</span>
+            </div>
+          </a>
+          <a mat-list-item routerLink="/admin/vendors">
+            <div class="flex flex-col m-auto">
+              <span class="material-icons icon"> location_city </span>
+              <span class="text-sm text-center text-white">Proveedores</span>
+            </div>
+          </a>
+          <a mat-list-item routerLink="/admin/clients">
+            <div class="flex flex-col m-auto">
+              <span class="material-icons icon"> people </span>
+              <span class="text-sm text-center text-white">Usuarios</span>
+            </div>
+          </a>
+          <a mat-list-item routerLink="/admin/payment-types">
+            <div class="flex flex-col m-auto">
+              <span class="material-icons icon"> attach_money </span>
+              <span class="text-sm text-center text-white">Tipos de pago</span>
+            </div>
+          </a>
+          <a mat-list-item routerLink="/admin/order-status">
+            <div class="flex flex-col m-auto">
+              <i class="fas fa-compass icon"></i>
+              <span class="text-sm text-center text-white"
+                >Estados de pedido</span
+              >
+            </div>
+          </a>
+          <a mat-list-item routerLink="/admin/document-type">
+            <div class="flex flex-col m-auto">
+              <i class="fas fa-file icon"></i>
+              <span class="text-sm text-center text-white"
+                >Documentos de venta</span
+              >
+            </div>
+          </a>
+        </div>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/my-account/profile"
+        class="unselectable settings"
+      >
+        <div class="flex flex-col m-auto">
+          <span class="material-icons icon"> settings </span>
+          <span class="text-sm text-center text-white">Editar mi perfil</span>
+        </div>
+      </a>
+      <a mat-list-item (click)="loguout()" class="logout unselectable">
+        <div class="flex flex-col m-auto">
+          <span class="material-icons icon"> logout </span>
+          <span class="text-sm text-center text-white">Cerrar sesión</span>
+        </div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>
+        <img src="./../../../../../../assets/LogoBarra.png" alt="" class="imgLogoBarra">
+      </span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminRoutesModule } from './admin-routes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../../modules/material/material.module';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
 
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    MainNavComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutesModule,
     ReactiveFormsModule,
-    // MaterialModule,
+    MaterialModule,
     // LayoutModule,
     // SharedModule,
     FormsModule,

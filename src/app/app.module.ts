@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 import { ApiInterceptor } from './infraestructure/interceptors/ApiInterceptor';
 import { ApiModule } from './infraestructure/remiseriaApi/api.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 // configuracion de headers global para la api
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -24,6 +30,12 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     HttpClientModule,
     ApiModule.forRoot({ rootUrl: environment.apiURL }),
     BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [ApiInterceptor,
     API_INTERCEPTOR_PROVIDER],
