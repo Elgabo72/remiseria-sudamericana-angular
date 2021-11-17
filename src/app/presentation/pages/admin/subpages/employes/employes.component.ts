@@ -18,7 +18,7 @@ export class EmployesComponent implements OnInit {
     'FirstName',
     'LastName',
     'Status',
-    'Type',
+    'Email',
     'Actions',
   ];
   ocultado = 'd-none';
