@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthControllerService } from 'src/app/core/api/services/auth-controller.service';
+import { AuthControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+
 
 @Component({
   selector: 'app-login',

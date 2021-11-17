@@ -5,8 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './componentes/login/login.component';
-import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
+import { LoginComponent } from './presentation/pages/login/login.component';
+import { PanelAdminComponent } from './presentation/pages/panel-admin/panel-admin.component';
 
 @NgModule({
   declarations: [
