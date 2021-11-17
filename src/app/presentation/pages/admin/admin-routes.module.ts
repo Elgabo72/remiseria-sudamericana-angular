@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { EmployesComponent } from './subpages/employes/employes.component';
 import { PanelAdminComponent } from './subpages/panel-admin/panel-admin.component';
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
             {
                 path: 'dashboard',
                 component: PanelAdminComponent
+            },
+            {
+                path: 'employes',
+                component: EmployesComponent
             },
             // {
             //     path: 'vendors',

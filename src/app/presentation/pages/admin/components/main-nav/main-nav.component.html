@@ -7,9 +7,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>
-      
-    </mat-toolbar>
+    <mat-toolbar> </mat-toolbar>
     <div class="admin-name">
       <span class="unselectable capitalize" style="font-family: Roboto">{{
         user.username
@@ -35,10 +33,10 @@
           <span class="text-sm text-center text-white">Mantenimientos</span>
         </div>
         <div class="hover-popup">
-          <a mat-list-item routerLink="/admin/categorys">
+          <a mat-list-item routerLink="/remiseria/employes">
             <div class="flex flex-col m-auto">
               <span class="material-icons icon"> category </span>
-              <span class="text-sm text-center text-white">Categorias</span>
+              <span class="text-sm text-center text-white">Employes</span>
             </div>
           </a>
           <a mat-list-item routerLink="/admin/products">
@@ -113,7 +111,11 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>
-        <img src="./../../../../../../assets/LogoBarra.png" alt="" class="imgLogoBarra">
+        <img
+          src="./../../../../../../assets/LogoBarra.png"
+          alt=""
+          class="imgLogoBarra"
+        />
       </span>
     </mat-toolbar>
     <router-outlet></router-outlet>
