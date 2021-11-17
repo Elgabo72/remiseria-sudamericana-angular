@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginService } from '../../auth/login.service';
+import { LoginService } from '../../../infraestructure/auth/login.service';
 
 
 const routes: Routes = [

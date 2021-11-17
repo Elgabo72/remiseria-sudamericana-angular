@@ -1,11 +1,17 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { forwardRef, NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ApiInterceptor } from './infraestructure/interceptors/ApiInterceptor';
 import { ApiModule } from './infraestructure/remiseriaApi/api.module';
-
+// configuracion de headers global para la api
+export const API_INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useExisting: forwardRef(() => ApiInterceptor),
+  multi: true
+};
 
 @NgModule({
   declarations: [
@@ -17,7 +23,8 @@ import { ApiModule } from './infraestructure/remiseriaApi/api.module';
     HttpClientModule,
     ApiModule.forRoot({ rootUrl: environment.apiURL }),
   ],
-  providers: [],
+  providers: [ApiInterceptor,
+    API_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

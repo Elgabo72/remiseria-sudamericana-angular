@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthControllerService } from 'src/app/infraestructure/remiseriaApi/services';
-import { LoginService } from '../../auth/login.service';
+import { LoginService } from '../../../infraestructure/auth/login.service';
 
 
 @Component({
