@@ -18,6 +18,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./presentation/pages/admin/admin.module').then((m) => m.AdminModule),
   },
+  { path: '**', redirectTo: '/login' },
+
 ];
 
 @NgModule({
