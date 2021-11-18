@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-panel-admin',
-  templateUrl: './panel-admin.component.html',
-  styleUrls: ['./panel-admin.component.css']
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class PanelAdminComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   constructor() { }
 

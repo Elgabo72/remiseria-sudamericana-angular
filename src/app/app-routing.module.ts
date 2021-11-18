@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'remiseria',
     canActivate: [AdminGuard],
     loadChildren: () =>
-      import('./presentation/pages/admin/admin.module').then((m) => m.AdminModule),
+      import('./presentation/pages/remiseria/admin.module').then((m) => m.AdminModule),
   },
   { path: '**', redirectTo: '/login' },
 
