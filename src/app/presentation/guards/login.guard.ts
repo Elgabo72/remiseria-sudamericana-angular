@@ -22,7 +22,6 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log("me carga")
     if (this.loginService.isLogged()) {
       // this.loginService.logout();
       return this.router.navigate(['/remiseria/dashboard']);
