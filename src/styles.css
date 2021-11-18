@@ -46,7 +46,17 @@ td.mat-cell:last-of-type,
 td.mat-footer-cell:last-of-type {
   padding-right: 0px;
 }
-
+.d-none {
+  display: none;
+}
+.badge-active {
+  background-color: green;
+  color: white;
+}
+.badge-inactive {
+  background-color: red;
+  color: white;
+}
 html,
 body {
   height: 100%;

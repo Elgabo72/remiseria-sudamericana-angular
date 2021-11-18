@@ -41,7 +41,7 @@ export class EmployesComponent implements OnInit {
         this.ocultado = employes.length == 0 ? 'd-none' : '';
         this.showSpinner = false;
       });
-    }, 300);
+    }, 2000);
   }
   chargingTableList(): void {
     this.dataSource = new MatTableDataSource<User>(this.employeList);
