@@ -6,6 +6,7 @@ import { MaterialModule } from '../../modules/material/material.module';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { EmployesComponent } from './subpages/employes/employes.component';
 import { ComponentsModule } from '../../components/components.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -20,6 +21,7 @@ import { ComponentsModule } from '../../components/components.module';
     AdminRoutesModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatDialogModule,
     // LayoutModule,
     // SharedModule,
     FormsModule,

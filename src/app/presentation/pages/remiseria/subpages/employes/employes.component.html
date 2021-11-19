@@ -17,8 +17,8 @@
       <a
         mat-flat-button
         color="primary"
-        [routerLink]="['/admin/clients/form']"
         class="my-2 text-white text-decoration-none"
+        (click)="openModal()"
       >
         Create employe
       </a>
@@ -127,7 +127,8 @@
       ></mat-paginator>
     </div>
 
-    <h2 mat-dialog-title>Delete all elements?</h2>
-   
+    <app-modal-dialog *ngIf="activeModal" (closeModalEvent)="closeModal($event)"></app-modal-dialog>
+
+    <!-- <h2 mat-dialog-title>Delete all elements?</h2> -->
   </div>
 </div>

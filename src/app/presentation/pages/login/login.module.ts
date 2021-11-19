@@ -4,6 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from '../../../infraestructure/auth/login.service';
+import { ComponentsModule } from '../../components/components.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 const routes: Routes = [
@@ -17,9 +20,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [LoginComponent],
   imports: [
+    ComponentsModule,
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatButtonModule
   ],
   providers: [
     LoginService

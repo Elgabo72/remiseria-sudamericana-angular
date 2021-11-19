@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/infraestructure/remiseriaApi/models';
@@ -9,8 +9,10 @@ import { UserControllerService } from 'src/app/infraestructure/remiseriaApi/serv
   templateUrl: './employes.component.html',
   styleUrls: ['./employes.component.css']
 })
-export class EmployesComponent implements OnInit {
+export class EmployesComponent implements OnInit, AfterViewInit {
   constructor(private service: UserControllerService) { }
+
+  activeModal = false;
   employeList: User[] = [];
   dataSource: any = null;
   displayedColumns: string[] = [
@@ -30,6 +32,14 @@ export class EmployesComponent implements OnInit {
     this.loadClientList();
   }
 
+  openModal(): void {
+    this.activeModal = true;
+  }
+  closeModal(state: boolean): void {
+    this.activeModal = state;
+  }
+
+
   //methods
   loadClientList(): void {
     setTimeout(() => {
@@ -38,11 +48,12 @@ export class EmployesComponent implements OnInit {
         console.log(employes);
 
         this.chargingTableList();
-        this.ocultado = employes.length == 0 ? 'd-none' : '';
+        this.ocultado = employes.length === 0 ? 'd-none' : '';
         this.showSpinner = false;
       });
     }, 2000);
   }
+
   chargingTableList(): void {
     this.dataSource = new MatTableDataSource<User>(this.employeList);
     this.dataSource.paginator = this.paginator;
