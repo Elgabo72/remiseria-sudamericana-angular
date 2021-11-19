@@ -11,13 +11,10 @@ export class ModalDialogComponent implements OnInit, OnChanges {
   @Output()
   closeModalEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @Input() dataObject: any;
+
   constructor(public dialog: MatDialog) {
-    const dialogRef = this.dialog.open(ModalContentComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      this.closeModalEvent.emit(false);
-      // this.ngOnDestroy();
-    });
+  
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -26,7 +23,17 @@ export class ModalDialogComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    const dialogRef = this.dialog.open(ModalContentComponent, {
+      maxWidth: '600px',
+      
+      data: this.dataObject,
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+      this.closeModalEvent.emit(false);
+      // this.ngOnDestroy();
+    });
   }
 
 }

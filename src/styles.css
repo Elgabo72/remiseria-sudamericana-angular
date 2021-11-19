@@ -3,6 +3,15 @@
   margin: 0;
   padding: 0;
 }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 #contenedor_carga {
   background-color: rgba(250, 240, 245, 0.9);
   height: 100%;
@@ -57,11 +66,7 @@ td.mat-footer-cell:last-of-type {
   background-color: red;
   color: white;
 }
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+/* .m-w-600 {
+  
+  max-width: 600px;
+} */

@@ -127,7 +127,13 @@
       ></mat-paginator>
     </div>
 
-    <app-modal-dialog *ngIf="activeModal" (closeModalEvent)="closeModal($event)"></app-modal-dialog>
+    <app-modal-dialog
+      [dataObject]="userObject"
+      *ngIf="activeModal"
+      (closeModalEvent)="closeModal($event)"
+    >
+      <h3>data extra template</h3>
+    </app-modal-dialog>
 
     <!-- <h2 mat-dialog-title>Delete all elements?</h2> -->
   </div>

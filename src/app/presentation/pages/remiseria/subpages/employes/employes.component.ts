@@ -10,8 +10,13 @@ import { UserControllerService } from 'src/app/infraestructure/remiseriaApi/serv
   styleUrls: ['./employes.component.css']
 })
 export class EmployesComponent implements OnInit, AfterViewInit {
-  constructor(private service: UserControllerService) { }
+  userObject: User = {
+    firstName: 'lakjsdkljdf',
+  }
+    ;
+  constructor(private service: UserControllerService) {
 
+  }
   activeModal = false;
   employeList: User[] = [];
   dataSource: any = null;

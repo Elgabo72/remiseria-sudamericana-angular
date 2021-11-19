@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 // configuracion de headers global para la api
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -39,7 +38,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     MatListModule,
   ],
   providers: [ApiInterceptor,
-    API_INTERCEPTOR_PROVIDER, { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
+    API_INTERCEPTOR_PROVIDER, 
   ],
   bootstrap: [AppComponent],
   
