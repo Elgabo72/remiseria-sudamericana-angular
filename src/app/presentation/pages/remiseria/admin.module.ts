@@ -6,6 +6,8 @@ import { MaterialModule } from '../../modules/material/material.module';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { EmployesComponent } from './subpages/employes/employes.component';
 import { ComponentsModule } from '../../components/components.module';
+import { RolesComponent } from './subpages/roles/roles.component';
+import { RegistersComponent } from './subpages/registers/registers.component';
 
 
 
@@ -13,6 +15,8 @@ import { ComponentsModule } from '../../components/components.module';
   declarations: [
     MainNavComponent,
     EmployesComponent,
+    RolesComponent,
+    RegistersComponent
   ],
   imports: [
     ComponentsModule,
