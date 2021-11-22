@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Role, User } from 'src/app/infraestructure/remiseriaApi/models';
 import { RoleControllerService, UserControllerService } from 'src/app/infraestructure/remiseriaApi/services';
 import Swal from 'sweetalert2';
@@ -19,6 +19,8 @@ export class RegistersComponent implements OnInit {
   ngOnInit(): void {
     this.cargarRole();
   }
+  @Output() refreshList=new EventEmitter();
+  
   create(): void {
     //  crea el cliente, luego le redirije
     this.userService.saveUsingPOST6(this.employe).subscribe((res) => {
@@ -28,7 +30,7 @@ export class RegistersComponent implements OnInit {
         `Empleado ${res.firstName} ha sido registrado`,
         'success'
       );
-      document.getElementById("form")?.onreset
+      
     });
   }
   update(): void {
