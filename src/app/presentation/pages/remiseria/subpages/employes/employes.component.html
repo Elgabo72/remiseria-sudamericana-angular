@@ -22,6 +22,7 @@
         [show]="activeModal"
         [update]="activeUpdated"
         [employe]="currentUser"
+        (refreshList)="refreshList()"
         (closeModalEvent)="closeModal($event)"
       ></app-registers>
     </div>

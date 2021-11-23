@@ -44,12 +44,20 @@ export class EmployesComponent implements OnInit, OnChanges {
     this.loadClientList();
   }
 
-  //methods
+  //methods modal
+
   closeModal(show: boolean): void {
     this.activeModal = show;
   }
+  refreshList(): void {
+    // console.log("me ejecuto");
+    this.ocultado = 'd-none';
+    this.showSpinner = true;
+    this.loadClientList()
+  }
   handlerClickRegister(): void {
     this.activeModal = !this.activeModal;
+    this.currentUser = {};
   }
 
   editEmployeInModal(employe: User) {
@@ -58,6 +66,7 @@ export class EmployesComponent implements OnInit, OnChanges {
     this.activeUpdated = true;
   }
 
+  // methods with API
   loadClientList(): void {
     setTimeout(() => {
       this.service.getAllUsingGET6().subscribe((employes) => {
