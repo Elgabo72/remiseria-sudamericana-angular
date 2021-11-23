@@ -109,7 +109,7 @@
                   mat-mini-fab
                   color="primary"
                   class="mx-1"
-                  [routerLink]="['/admin/clients/form', element.idClient]"
+                  (click)="editEmployeInModal(element)"
                 >
                   <mat-icon>edit</mat-icon>
                 </a>

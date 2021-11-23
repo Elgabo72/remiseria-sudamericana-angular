@@ -52,6 +52,12 @@ export class EmployesComponent implements OnInit, OnChanges {
     this.activeModal = !this.activeModal;
   }
 
+  editEmployeInModal(employe: User) {
+    this.currentUser = employe;
+    this.activeModal = true;
+    this.activeUpdated = true;
+  }
+
   loadClientList(): void {
     setTimeout(() => {
       this.service.getAllUsingGET6().subscribe((employes) => {
