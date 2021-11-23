@@ -100,6 +100,11 @@ td.mat-footer-cell:last-of-type {
   background-color: rgb(212, 47, 47);
   color: white;
 }
+.justify-content-center {
+  display: flex;
+  justify-content: center;
+}
+
 html,
 body {
   height: 100%;

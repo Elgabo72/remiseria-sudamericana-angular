@@ -11,6 +11,17 @@
         >
       </div>
     </div>
+
+    <div class=" mgn-top_button">
+      <a
+        mat-flat-button
+        color="primary"
+        class="my-2 text-white text-decoration-none"
+        (click)="handlerClickRegister()"
+      >
+        Crear empleado
+      </a>
+    </div>
     <app-spinner [show]="showSpinner"></app-spinner>
     <!-- <div *ngIf="!showSpinner && employeList.length != 0"> -->
 
@@ -129,16 +140,6 @@
         [pageSizeOptions]="[5, 10, 20]"
         showFirstLastButtons
       ></mat-paginator>
-    </div>
-    <div class="t-center mgn-top_button">
-      <a
-        mat-flat-button
-        color="primary"
-        class="my-2 text-white text-decoration-none"
-        (click)="handlerClickRegister()"
-      >
-        Crear empleado
-      </a>
     </div>
 
     <!-- <h2 mat-dialog-title>Delete all elements?</h2> -->

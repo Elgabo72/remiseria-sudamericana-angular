@@ -62,7 +62,7 @@ export class EmployesComponent implements OnInit, OnChanges {
 
   editEmployeInModal(employe: User) {
     this.currentUser = employe;
-    this.activeModal = true;
+    this.activeModal = !this.activeModal;
     this.activeUpdated = true;
   }
 
