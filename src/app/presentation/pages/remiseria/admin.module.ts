@@ -7,7 +7,8 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { EmployesComponent } from './subpages/employes/employes.component';
 import { ComponentsModule } from '../../components/components.module';
 import { RolesComponent } from './subpages/roles/roles.component';
-import { RegistersComponent } from './subpages/employes/components/formEmploye/formEmploye.component';
+import { FormEmployeComponent } from './subpages/employes/components/formEmploye/formEmploye.component';
+import { FormRoleComponent } from './subpages/roles/components/form-role/form-role.component';
 
 
 
@@ -16,7 +17,8 @@ import { RegistersComponent } from './subpages/employes/components/formEmploye/f
     MainNavComponent,
     EmployesComponent,
     RolesComponent,
-    RegistersComponent
+    FormEmployeComponent,
+    FormRoleComponent
   ],
   imports: [
     ComponentsModule,

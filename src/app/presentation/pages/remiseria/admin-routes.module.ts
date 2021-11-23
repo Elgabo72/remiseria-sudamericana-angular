@@ -5,7 +5,7 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { EmployesComponent } from './subpages/employes/employes.component';
 import { DashboardComponent } from './subpages/dashboard/dashboard.component';
 import { RolesComponent } from './subpages/roles/roles.component';
-import { RegistersComponent } from './subpages/employes/components/formEmploye/formEmploye.component';
+import { FormEmployeComponent } from './subpages/employes/components/formEmploye/formEmploye.component';
 
 const routes: Routes = [
     {
@@ -28,10 +28,6 @@ const routes: Routes = [
             {
                 path: 'roles',
                 component: RolesComponent
-            },
-            {
-                path: 'registers',
-                component: RegistersComponent
             },
             // {
             //     path: 'vendors',

@@ -1,51 +1,48 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Role, User } from 'src/app/infraestructure/remiseriaApi/models';
+import { Role } from 'src/app/infraestructure/remiseriaApi/models';
 import { RoleControllerService, UserControllerService } from 'src/app/infraestructure/remiseriaApi/services';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-formEmploye',
-  templateUrl: './formEmploye.component.html',
-  styleUrls: ['./formEmploye.component.css']
+  selector: 'app-form-role',
+  templateUrl: './form-role.component.html',
+  styleUrls: ['./form-role.component.css']
 })
-export class FormEmployeComponent implements OnInit {
+export class FormRoleComponent implements OnInit {
+
   @Input() show: boolean = false;
   @Input() update: boolean = false;
-  @Input() employe: User = {};
+  @Input() data: Role = {};
   @Output() closeModalEvent: EventEmitter<boolean> = new EventEmitter();
   @Output() refreshList: EventEmitter<void> = new EventEmitter();
 
   constructor(
-    private userService: UserControllerService,
     private roleService: RoleControllerService
   ) { }
 
   // employe: User = {}
   role: Role[] = []
   ngOnInit(): void {
-    this.employe.idUser = this.employe.idUser ?? 0;
-    this.cargarRole();
+    this.data.idRole = this.data.idRole ?? 0;
   }
 
   createUpdateEmploye(): void {
     //  crea el cliente, luego le redirije
-    console.log(this.employe);
-
     if (!this.update) {
-      this.userService.saveUsingPOST6(this.employe).subscribe((res) => {
+      this.roleService.saveUsingPOST3(this.data).subscribe((res) => {
         Swal.fire(
-          'Nueva Empleado Creado',
-          `Empleado ${res.firstName} ha sido registrado`,
+          'Nueva Role Creado',
+          `Empleado ${res.description} ha sido registrado`,
           'success'
         );
 
       });
     } else {
 
-      this.userService.updateUsingPUT6(this.employe).subscribe((employe) => {
+      this.roleService.updateUsingPUT3(this.data).subscribe((employe) => {
         Swal.fire(
-          'Empleado Actualizado',
-          `Empleado ${employe.firstName} ha sido actualizado`,
+          'Rol Actualizado',
+          `Rol ${employe.description} ha sido actualizado`,
           'success'
         );
       });
@@ -63,9 +60,5 @@ export class FormEmployeComponent implements OnInit {
     this.refreshList.emit();
   }
 
-  cargarRole() {
-    this.roleService
-      .getAllUsingGET3()
-      .subscribe((role) => (this.role = role));
-  }
+  
 }

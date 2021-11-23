@@ -10,13 +10,9 @@ import Swal from 'sweetalert2';
   templateUrl: './employes.component.html',
   styleUrls: ['./employes.component.css']
 })
-export class EmployesComponent implements OnInit, OnChanges {
+export class EmployesComponent implements OnInit {
 
   constructor(private service: UserControllerService) { }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-
-  }
 
   // properties for Modal
   activeModal = false;
@@ -95,6 +91,7 @@ export class EmployesComponent implements OnInit, OnChanges {
       });
     }, 2000);
   }
+  
   chargingTableList(): void {
     this.dataSource = new MatTableDataSource<User>(this.employeList);
     this.dataSource.paginator = this.paginator;
