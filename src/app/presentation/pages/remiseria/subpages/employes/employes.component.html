@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class=" mgn-top_button">
+    <div class="mgn-top_button">
       <a
         mat-flat-button
         color="primary"
@@ -125,7 +125,12 @@
                 >
                   <mat-icon>edit</mat-icon>
                 </a>
-                <button mat-mini-fab color="warn" class="mx-1">
+                <button
+                  mat-mini-fab
+                  color="warn"
+                  (click)="deleteEmploye(element)"
+                  class="mx-1"
+                >
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>

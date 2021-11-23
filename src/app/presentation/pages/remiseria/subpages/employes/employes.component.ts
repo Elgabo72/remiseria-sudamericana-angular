@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/infraestructure/remiseriaApi/models';
 import { UserControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employes',
@@ -64,6 +65,21 @@ export class EmployesComponent implements OnInit, OnChanges {
     this.currentUser = employe;
     this.activeModal = !this.activeModal;
     this.activeUpdated = true;
+
+  }
+  deleteEmploye(employe: User) {
+    this.service.deleteUsingDELETE6(employe.idUser ?? 0).subscribe((res) => {
+      Swal.fire(
+        'Empleado Desabilitado',
+        `Empleado ${employe.firstName} ha sido desabilitado`,
+        'success'
+      );
+    });
+    this.refreshList()
+    // this.currentUser = employe;
+    // this.activeModal = !this.activeModal;
+    this.activeUpdated = true;
+
   }
 
   // methods with API
