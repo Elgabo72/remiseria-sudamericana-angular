@@ -29,13 +29,13 @@
       class="vtn-emergente"
       [ngStyle]="{ display: activeModal ? 'block' : 'none' }"
     >
-      <app-registers
+      <app-formEmploye
         [show]="activeModal"
         [update]="activeUpdated"
         [employe]="currentUser"
         (refreshList)="refreshList()"
         (closeModalEvent)="closeModal($event)"
-      ></app-registers>
+      ></app-formEmploye>
     </div>
 
     <div class="{{ ocultado }}">

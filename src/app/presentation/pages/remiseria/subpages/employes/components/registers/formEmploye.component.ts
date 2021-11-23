@@ -4,9 +4,9 @@ import { RoleControllerService, UserControllerService } from 'src/app/infraestru
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-registers',
-  templateUrl: './registers.component.html',
-  styleUrls: ['./registers.component.css']
+  selector: 'app-formEmploye',
+  templateUrl: './formEmploye.component.html',
+  styleUrls: ['./formEmploye.component.css']
 })
 export class RegistersComponent implements OnInit {
   @Input() show: boolean = false;
