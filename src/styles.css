@@ -55,7 +55,8 @@ td.mat-footer-cell:last-of-type {
 .mgn-top_button {
   margin: 2%;
 }
-#vtn-emergente {
+
+.vtn-emergente {
   background-color: rgb(255, 255, 255);
   border: 1px solid black;
   border-radius: 10px;
