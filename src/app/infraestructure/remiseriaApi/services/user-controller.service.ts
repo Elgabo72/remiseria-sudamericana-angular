@@ -19,6 +19,8 @@ class UserControllerService extends __BaseService {
   static readonly saveUsingPOST6Path = '/api/user';
   static readonly updateUsingPUT6Path = '/api/user';
   static readonly getAllUsingGET6Path = '/api/user/all';
+  static readonly getAllEmployesUsingGETPath = '/api/user/allEmployes';
+  static readonly getByIdRoleUsingGETPath = '/api/user/findByRole/{id}';
   static readonly getByIdUsingGET6Path = '/api/user/{id}';
   static readonly deleteUsingDELETE6Path = '/api/user/{id}';
 
@@ -136,6 +138,79 @@ class UserControllerService extends __BaseService {
    */
   getAllUsingGET6(): __Observable<Array<User>> {
     return this.getAllUsingGET6Response().pipe(
+      __map(_r => _r.body as Array<User>)
+    );
+  }
+
+  /**
+   * Get all employes
+   * @return OK
+   */
+  getAllEmployesUsingGETResponse(): __Observable<__StrictHttpResponse<Array<User>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/user/allEmployes`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<User>>;
+      })
+    );
+  }
+  /**
+   * Get all employes
+   * @return OK
+   */
+  getAllEmployesUsingGET(): __Observable<Array<User>> {
+    return this.getAllEmployesUsingGETResponse().pipe(
+      __map(_r => _r.body as Array<User>)
+    );
+  }
+
+  /**
+   * Search a user filter id role
+   * @param id The id role
+   * @return OK
+   */
+  getByIdRoleUsingGETResponse(id: number): __Observable<__StrictHttpResponse<Array<User>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/user/findByRole/${encodeURIComponent(String(id))}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<User>>;
+      })
+    );
+  }
+  /**
+   * Search a user filter id role
+   * @param id The id role
+   * @return OK
+   */
+  getByIdRoleUsingGET(id: number): __Observable<Array<User>> {
+    return this.getByIdRoleUsingGETResponse(id).pipe(
       __map(_r => _r.body as Array<User>)
     );
   }

@@ -81,7 +81,7 @@ export class EmployesComponent implements OnInit {
   // methods with API
   loadClientList(): void {
     setTimeout(() => {
-      this.service.getAllUsingGET6().subscribe((employes) => {
+      this.service.getAllEmployesUsingGET().subscribe((employes) => {
         this.employeList = employes;
         console.log(employes);
 
