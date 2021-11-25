@@ -38,28 +38,30 @@ export class EmployesComponent implements OnInit {
 
   }
   ngAfterViewInit(): void {
-    this.loadClientList();
+    this.loadData();
   }
 
   //methods modal
 
   closeModal(show: boolean): void {
-    this.activeModal = show;
+    this.activeModal = false;
+    this.activeUpdated = false;
+    this.refreshList();
   }
   refreshList(): void {
     // console.log("me ejecuto");
     this.ocultado = 'd-none';
     this.showSpinner = true;
-    this.loadClientList()
+    this.loadData()
   }
   handlerClickRegister(): void {
-    this.activeModal = !this.activeModal;
+    this.activeModal = true;
     this.currentUser = {};
   }
 
   editEmployeInModal(employe: User) {
     this.currentUser = employe;
-    this.activeModal = !this.activeModal;
+    this.activeModal = true;
     this.activeUpdated = true;
 
   }
@@ -79,7 +81,7 @@ export class EmployesComponent implements OnInit {
   }
 
   // methods with API
-  loadClientList(): void {
+  loadData(): void {
     setTimeout(() => {
       this.service.getAllEmployesUsingGET().subscribe((employes) => {
         this.employeList = employes;
@@ -91,7 +93,7 @@ export class EmployesComponent implements OnInit {
       });
     }, 2000);
   }
-  
+
   chargingTableList(): void {
     this.dataSource = new MatTableDataSource<User>(this.employeList);
     this.dataSource.paginator = this.paginator;

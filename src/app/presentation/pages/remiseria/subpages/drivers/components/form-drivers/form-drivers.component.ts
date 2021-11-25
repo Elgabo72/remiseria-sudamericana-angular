@@ -57,8 +57,8 @@ export class FormDriversComponent implements OnInit {
 
   closeModal(): void {
     this.closeModalEvent.emit(!this.show);
-    this.refreshList.emit();
-    this.update = false;
+    // this.refreshList.emit();
+    // this.update = false;
   }
 
   refreshListEvent(): void {

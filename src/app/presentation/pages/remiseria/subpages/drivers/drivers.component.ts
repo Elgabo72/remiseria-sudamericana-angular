@@ -46,6 +46,8 @@ export class DriversComponent implements OnInit {
 
   closeModal(show: boolean): void {
     this.activeModal = show;
+    this.activeUpdated = false;
+    this.refreshList();
   }
   refreshList(): void {
     // console.log("me ejecuto");
