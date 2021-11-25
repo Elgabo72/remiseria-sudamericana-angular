@@ -9,6 +9,8 @@ import { ComponentsModule } from '../../components/components.module';
 import { RolesComponent } from './subpages/roles/roles.component';
 import { FormEmployeComponent } from './subpages/employes/components/formEmploye/formEmploye.component';
 import { FormRoleComponent } from './subpages/roles/components/form-role/form-role.component';
+import { DriversComponent } from './subpages/drivers/drivers.component';
+import { FormDriversComponent } from './subpages/drivers/components/form-drivers/form-drivers.component';
 
 
 
@@ -18,7 +20,9 @@ import { FormRoleComponent } from './subpages/roles/components/form-role/form-ro
     EmployesComponent,
     RolesComponent,
     FormEmployeComponent,
-    FormRoleComponent
+    FormRoleComponent,
+    DriversComponent,
+    FormDriversComponent
   ],
   imports: [
     ComponentsModule,
