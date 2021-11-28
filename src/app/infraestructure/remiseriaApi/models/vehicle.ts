@@ -1,5 +1,7 @@
 /* tslint:disable */
+import { User } from './user';
 export interface Vehicle {
+  active?: boolean;
   dateCreated?: string;
   dateUpdated?: string;
   description?: string;
@@ -9,4 +11,5 @@ export interface Vehicle {
   model?: string;
   plaque?: string;
   type?: string;
+  user?: User;
 }

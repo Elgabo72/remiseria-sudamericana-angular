@@ -1,6 +1,5 @@
 /* tslint:disable */
 import { Role } from './role';
-import { Vehicle } from './vehicle';
 export interface User {
   active?: boolean;
   address?: string;
@@ -15,5 +14,4 @@ export interface User {
   phone?: string;
   role?: Role;
   username?: string;
-  vehicles?: Array<Vehicle>;
 }

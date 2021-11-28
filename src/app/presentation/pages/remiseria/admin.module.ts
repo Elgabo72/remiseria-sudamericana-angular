@@ -11,6 +11,8 @@ import { FormEmployeComponent } from './subpages/employes/components/formEmploye
 import { FormRoleComponent } from './subpages/roles/components/form-role/form-role.component';
 import { DriversComponent } from './subpages/drivers/drivers.component';
 import { FormDriversComponent } from './subpages/drivers/components/form-drivers/form-drivers.component';
+import { VehiclesComponent } from './subpages/vehicles/vehicles.component';
+import { FormVehicleComponent } from './subpages/vehicles/components/form-vehicle/form-vehicle.component';
 
 
 
@@ -22,7 +24,9 @@ import { FormDriversComponent } from './subpages/drivers/components/form-drivers
     FormEmployeComponent,
     FormRoleComponent,
     DriversComponent,
-    FormDriversComponent
+    FormDriversComponent,
+    VehiclesComponent,
+    FormVehicleComponent
   ],
   imports: [
     ComponentsModule,

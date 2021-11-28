@@ -7,6 +7,7 @@ import { DashboardComponent } from './subpages/dashboard/dashboard.component';
 import { RolesComponent } from './subpages/roles/roles.component';
 import { FormEmployeComponent } from './subpages/employes/components/formEmploye/formEmploye.component';
 import { DriversComponent } from './subpages/drivers/drivers.component';
+import { VehiclesComponent } from './subpages/vehicles/vehicles.component';
 
 const routes: Routes = [
     {
@@ -33,6 +34,10 @@ const routes: Routes = [
             {
                 path: 'drivers',
                 component: DriversComponent
+            },
+            {
+                path: 'vehicles',
+                component: VehiclesComponent
             },
             // {
             //     path: 'vendors',

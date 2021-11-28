@@ -41,7 +41,7 @@
 }
 .sidenav {
   /* width: fit-content */
-  background-color: #476072;
+  background-color: #0e184f;
   border-top-right-radius: var(--nav-radius);
   border-bottom-right-radius: var(--nav-radius);
 }

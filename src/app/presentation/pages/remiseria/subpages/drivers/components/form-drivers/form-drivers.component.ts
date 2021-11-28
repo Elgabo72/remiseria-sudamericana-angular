@@ -32,7 +32,7 @@ export class FormDriversComponent implements OnInit {
     console.log(this.employe);
 
     if (!this.update) {
-      this.userService.saveUsingPOST6({ ...this.employe, idRol: Roles.CHOFER }).subscribe((res) => {
+      this.userService.saveUsingPOST6({ ...this.employe, idRol: Roles.CHOFER ,password:""}).subscribe((res) => {
         Swal.fire(
           'Nueva Chofer Creado',
           `Chofer ${res.firstName} ha sido registrado`,

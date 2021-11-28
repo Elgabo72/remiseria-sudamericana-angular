@@ -179,7 +179,7 @@ class VehicleControllerService extends __BaseService {
   }
 
   /**
-   * Delete a Vehicle by ID
+   * Desactive Vehicle by ID
    * @param id The id of the vehicle
    * @return OK
    */
@@ -206,7 +206,7 @@ class VehicleControllerService extends __BaseService {
     );
   }
   /**
-   * Delete a Vehicle by ID
+   * Desactive Vehicle by ID
    * @param id The id of the vehicle
    * @return OK
    */

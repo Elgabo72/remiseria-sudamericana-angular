@@ -1,24 +1,14 @@
 <div style="text-align: center">
-  <a class="btn-cerrar" (click)="closeModal()"
-    ><i class="far fa-times-circle"></i
-  ></a>
+  <a class="btn-cerrar" (click)="closeModal()"><i class="far fa-times-circle"></i></a>
   <form #productsForm="ngForm" id="form" class="row p-4 justify-content-center">
     <div class="col-md-12 ">
       <div class="form-group">
         <mat-form-field appearance="fill" class="w-100">
           <mat-label class="block">Nombre </mat-label>
-          <input
-            matInput
-            maxlength="150"
-            [(ngModel)]="employe.firstName"
-            #name="ngModel"
-            name="name"
-            required
-            minlength="1"
-          />
+          <input matInput maxlength="150" [(ngModel)]="employe.firstName" #name="ngModel" name="name" required
+            minlength="1" />
         </mat-form-field>
-        <div
-          class="
+        <div class="
             inline-flex
             items-center
             p-1
@@ -30,9 +20,7 @@
             bg-red-100
             rounded-full
             font-weight-bold
-          "
-          *ngIf="name.invalid && (name.dirty || name.touched)"
-        >
+          " *ngIf="name.invalid && (name.dirty || name.touched)">
           <div class="" *ngIf="name.errors?.required">
             Se requiere el nombre
           </div>
@@ -41,18 +29,10 @@
       <div class="form-group">
         <mat-form-field appearance="fill" class="w-100">
           <mat-label class="block">Apellidos </mat-label>
-          <input
-            matInput
-            maxlength="150"
-            [(ngModel)]="employe.lastName"
-            #lastName="ngModel"
-            name="lastName"
-            required
-            minlength="1"
-          />
+          <input matInput maxlength="150" [(ngModel)]="employe.lastName" #lastName="ngModel" name="lastName" required
+            minlength="1" />
         </mat-form-field>
-        <div
-          class="
+        <div class="
             inline-flex
             items-center
             p-1
@@ -64,9 +44,7 @@
             bg-red-100
             rounded-full
             font-weight-bold
-          "
-          *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
-        >
+          " *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
           <div class="" *ngIf="lastName.errors?.required">
             Se requiere los apellidos
           </div>
@@ -75,18 +53,10 @@
       <div class="form-group">
         <mat-form-field appearance="fill" class="w-100">
           <mat-label class="block">Dirección </mat-label>
-          <input
-            matInput
-            maxlength="150"
-            [(ngModel)]="employe.address"
-            #address="ngModel"
-            name="address"
-            required
-            minlength="1"
-          />
+          <input matInput maxlength="150" [(ngModel)]="employe.address" #address="ngModel" name="address" required
+            minlength="1" />
         </mat-form-field>
-        <div
-          class="
+        <div class="
             inline-flex
             items-center
             p-1
@@ -98,9 +68,7 @@
             bg-red-100
             rounded-full
             font-weight-bold
-          "
-          *ngIf="address.invalid && (address.dirty || address.touched)"
-        >
+          " *ngIf="address.invalid && (address.dirty || address.touched)">
           <div class="" *ngIf="address.errors?.required">
             Se requiere una dirección
           </div>
@@ -109,19 +77,10 @@
       <div class="form-group">
         <mat-form-field appearance="fill" class="w-100">
           <mat-label class="block">Insert Email</mat-label>
-          <input
-            matInput
-            maxlength="150"
-            [(ngModel)]="employe.email"
-            #email="ngModel"
-            name="email"
-            required
-            minlength="1"
-            type="text"
-          />
+          <input matInput maxlength="150" [(ngModel)]="employe.email" #email="ngModel" name="email" required
+            minlength="1" type="text" />
         </mat-form-field>
-        <div
-          class="
+        <div class="
             inline-flex
             items-center
             p-1
@@ -133,9 +92,7 @@
             bg-red-100
             rounded-full
             font-weight-bold
-          "
-          *ngIf="email.invalid && (email.dirty || email.touched)"
-        >
+          " *ngIf="email.invalid && (email.dirty || email.touched)">
           <div class="" *ngIf="email.errors?.required">Se requiere email</div>
           <div class="" *ngIf="email.errors?.email">Email no tiene formato</div>
         </div>
@@ -143,19 +100,10 @@
       <div class="form-group">
         <mat-form-field appearance="fill" class="w-100">
           <mat-label class="block">Teléfono</mat-label>
-          <input
-            matInput
-            maxlength="150"
-            [(ngModel)]="employe.phone"
-            #phone="ngModel"
-            name="address"
-            required
-            minlength="1"
-            type="number"
-          />
+          <input matInput maxlength="150" [(ngModel)]="employe.phone" #phone="ngModel" name="address" required
+            minlength="1" type="number" />
         </mat-form-field>
-        <div
-          class="
+        <div class="
             inline-flex
             items-center
             p-1
@@ -167,30 +115,22 @@
             bg-red-100
             rounded-full
             font-weight-bold
-          "
-          *ngIf="phone.invalid && (phone.dirty || phone.touched)"
-        >
+          " *ngIf="phone.invalid && (phone.dirty || phone.touched)">
           <div class="" *ngIf="phone.errors?.required">
             Se requiere Nro telefonico
           </div>
         </div>
       </div>
+      <div class="form-group">
+        <mat-label>Estado Activo</mat-label>
+        <input type="checkbox" [(ngModel)]="employe.active">
+      </div>
     </div>
 
-    <input
-      type="hidden"
-      [(ngModel)]="employe.idUser"
-      #password="ngModel"
-      name="idUser"
-    />
+    <input type="hidden" [(ngModel)]="employe.idUser" #password="ngModel" name="idUser" />
     <!-- buttons actions -->
-    <button
-      mat-flat-button
-      color="primary"
-      class="text-white w-100 h6"
-      (click)="createUpdateEmploye()"
-      [disabled]="!productsForm.form.valid"
-    >
+    <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="createUpdateEmploye()"
+      [disabled]="!productsForm.form.valid">
       <i class="mr-2 fas fa-save"></i>{{ this.update ? "Update" : "Guardar" }}
     </button>
   </form>
