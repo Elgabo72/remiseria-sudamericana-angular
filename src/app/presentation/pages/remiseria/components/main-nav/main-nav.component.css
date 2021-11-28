@@ -1,5 +1,5 @@
 :root {
-  --nav-radius: 30px;
+  --nav-radius: 50px;
 }
 .imgLogoBarra {
   max-width: 15vw;
@@ -113,8 +113,8 @@ mat-toolbar.mat-primary {
   display: none;
   z-index: 1;
   background-color: #476072;
-  border-top-right-radius: calc(var(--nav-radius) - 10px);
-  border-bottom-right-radius: calc(var(--nav-radius) - 10px);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .img-hover {
@@ -124,7 +124,7 @@ mat-toolbar.mat-primary {
 .img-hover:hover .hover-popup {
   position: fixed;
   display: block;
-  margin-left: 116px;
+  margin-left: 184px;
   margin-top: 60px;
   z-index: 1;
   animation: fadeIn ease 0.5s;
