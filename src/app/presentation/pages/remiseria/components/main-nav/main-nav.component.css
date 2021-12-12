@@ -39,9 +39,14 @@
   font-family: "Sansation";
   font-size: 1.2em;
 }
+
+.bg-blue-navbar {
+  background-color: #2f3946;
+  color: white;
+}
 .sidenav {
   /* width: fit-content */
-  background-color: #0e184f;
+  background-color: #2f3946;
   border-top-right-radius: var(--nav-radius);
   border-bottom-right-radius: var(--nav-radius);
 }
