@@ -1,15 +1,24 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <mat-toolbar>
-      <span class="material-icons icon" style="font-size: 85px;"> person_pin </span>
+      <span class="material-icons icon" style="font-size: 85px">
+        person_pin
+      </span>
     </mat-toolbar>
     <div class="admin-name">
       <span class="unselectable capitalize" style="font-family: Roboto">{{
         user.username
-        }}</span>
+      }}</span>
     </div>
-    <mat-horizontal-stepper class="separator" style="margin-bottom: 20px"> </mat-horizontal-stepper>
+    <mat-horizontal-stepper class="separator" style="margin-bottom: 20px">
+    </mat-horizontal-stepper>
     <mat-nav-list>
       <a class="m-top-5px" mat-list-item routerLink="/admin/dashboard">
         <div class="flex flex-col nav-center">
@@ -53,13 +62,13 @@
               <span class="text-sm t-center text-white">Vehiculos</span>
             </div>
           </a>
-          <a class="m-top-5px" mat-list-item routerLink="/admin/payment-types">
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/passengers">
             <div class="flex flex-col nav-center">
-              <span class="material-icons icon"> attach_money </span>
-              <span class="text-sm t-center text-white">Tipos de pago</span>
+              <span class="material-icons icon"> directions_run </span>
+              <span class="text-sm t-center text-white">Pasajeros</span>
             </div>
           </a>
-          <a class="m-top-5px" mat-list-item routerLink="/admin/order-status">
+          <!-- <a class="m-top-5px" mat-list-item routerLink="/admin/order-status">
             <div class="flex flex-col nav-center">
               <i class="fas fa-compass icon"></i>
               <span class="text-sm t-center text-white">Estados de pedido</span>
@@ -70,10 +79,14 @@
               <i class="fas fa-file icon"></i>
               <span class="text-sm t-center text-white">Documentos de venta</span>
             </div>
-          </a>
+          </a> -->
         </div>
       </a>
-      <a mat-list-item routerLink="/my-account/profile" class="unselectable settings">
+      <a
+        mat-list-item
+        routerLink="/my-account/profile"
+        class="unselectable settings"
+      >
         <div class="flex flex-col nav-center m-auto">
           <span class="material-icons icon"> settings </span>
           <span class="text-sm t-center text-white">Editar mi perfil</span>
@@ -89,12 +102,21 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>
-        <img src="./../../../../../../assets/LogoBarra.png" alt="" class="imgLogoBarra" />
+        <img
+          src="./../../../../../../assets/LogoBarra.png"
+          alt=""
+          class="imgLogoBarra"
+        />
       </span>
     </mat-toolbar>
     <router-outlet></router-outlet>

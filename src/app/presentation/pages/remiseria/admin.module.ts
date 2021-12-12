@@ -13,11 +13,14 @@ import { DriversComponent } from './subpages/drivers/drivers.component';
 import { FormDriversComponent } from './subpages/drivers/components/form-drivers/form-drivers.component';
 import { VehiclesComponent } from './subpages/vehicles/vehicles.component';
 import { FormVehicleComponent } from './subpages/vehicles/components/form-vehicle/form-vehicle.component';
+import { PassengersComponent } from './subpages/passengers/passengers.component';
+import { HeaderCustomComponent } from './components/header-custom/header-custom.component';
 
 
 
 @NgModule({
   declarations: [
+    HeaderCustomComponent,
     MainNavComponent,
     EmployesComponent,
     RolesComponent,
@@ -26,7 +29,8 @@ import { FormVehicleComponent } from './subpages/vehicles/components/form-vehicl
     DriversComponent,
     FormDriversComponent,
     VehiclesComponent,
-    FormVehicleComponent
+    FormVehicleComponent,
+    PassengersComponent
   ],
   imports: [
     ComponentsModule,
