@@ -36,7 +36,6 @@
   width: fit-content;
   margin: auto;
   color: #fff;
-  font-family: "Sansation";
   font-size: 1.2em;
 }
 
@@ -117,7 +116,7 @@ mat-toolbar.mat-primary {
 .hover-popup {
   display: none;
   z-index: 1;
-  background-color: #476072;
+  background-color: #3a424b;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }

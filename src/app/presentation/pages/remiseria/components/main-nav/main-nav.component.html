@@ -13,9 +13,9 @@
       </span>
     </mat-toolbar>
     <div class="admin-name">
-      <span class="unselectable capitalize" style="font-family: Roboto">{{
-        user.username
-      }}</span>
+      <p class="unselectable capitalize" style="margin-top: 20px">
+        {{ user.username }}
+      </p>
     </div>
     <mat-horizontal-stepper class="separator" style="margin-bottom: 20px">
     </mat-horizontal-stepper>
@@ -101,7 +101,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar class="bg-blue-navbar">
+    <mat-toolbar class="bg-blue-navbar" style="height: 75px">
       <button
         type="button"
         aria-label="Toggle sidenav"

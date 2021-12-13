@@ -1,0 +1,6 @@
+.header-custom{
+  box-shadow: -1px 12px 5px -4px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: -1px 12px 5px -4px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: -1px 12px 5px -4px rgba(0, 0, 0, 0.16);
+    margin-bottom: 3vh;
+}
