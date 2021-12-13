@@ -1,5 +1,5 @@
 export enum Roles {
-    PAJERO = 1,
+    PASAJERO = 1,
     CAJA = 2,
     RECEPCIONISTA = 3,
     ADMIN = 4,
