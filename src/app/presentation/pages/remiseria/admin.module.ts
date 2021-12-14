@@ -16,6 +16,8 @@ import { FormVehicleComponent } from './subpages/vehicles/components/form-vehicl
 import { PassengersComponent } from './subpages/passengers/passengers.component';
 import { HeaderCustomComponent } from './components/header-custom/header-custom.component';
 import { FormPassengerComponent } from './subpages/passengers/components/form-passenger/form-passenger.component';
+import { TariffComponent } from './subpages/tariff/tariff.component';
+import { FormTariffComponent } from './subpages/tariff/components/form-tariff/form-tariff.component';
 
 
 
@@ -32,7 +34,9 @@ import { FormPassengerComponent } from './subpages/passengers/components/form-pa
     VehiclesComponent,
     FormVehicleComponent,
     PassengersComponent,
-    FormPassengerComponent
+    FormPassengerComponent,
+    TariffComponent,
+    FormTariffComponent
   ],
   imports: [
     ComponentsModule,

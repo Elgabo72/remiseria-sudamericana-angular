@@ -1,12 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav bg-blue-navbar"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
+  <mat-sidenav #drawer class="sidenav bg-blue-navbar" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
     <mat-toolbar>
       <span class="material-icons icon" style="font-size: 85px">
         person_pin
@@ -20,10 +15,24 @@
     <mat-horizontal-stepper class="separator" style="margin-bottom: 20px">
     </mat-horizontal-stepper>
     <mat-nav-list>
-      <a class="m-top-5px" mat-list-item routerLink="/admin/dashboard">
+      <a class="m-top-5px" mat-list-item class="img-hover unselectable">
         <div class="flex flex-col nav-center">
           <span class="material-icons icon"> desktop_windows </span>
           <span class="text-sm t-center text-white">Recepción</span>
+        </div>
+        <div class="hover-popup">
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/drivers">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> assignment_ind </span>
+              <span class="text-sm t-center text-white">Choferes</span>
+            </div>
+          </a>
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/vehicles">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> directions_car </span>
+              <span class="text-sm t-center text-white">Vehiculos</span>
+            </div>
+          </a>
         </div>
       </a>
       <a class="m-top-5px" mat-list-item routerLink="/admin/orders">
@@ -50,7 +59,7 @@
               <span class="text-sm t-center text-white">Roles</span>
             </div>
           </a>
-          <a class="m-top-5px" mat-list-item routerLink="/remiseria/drivers">
+          <!-- <a class="m-top-5px" mat-list-item routerLink="/remiseria/drivers">
             <div class="flex flex-col nav-center">
               <span class="material-icons icon"> assignment_ind </span>
               <span class="text-sm t-center text-white">Choferes</span>
@@ -61,11 +70,17 @@
               <span class="material-icons icon"> directions_car </span>
               <span class="text-sm t-center text-white">Vehiculos</span>
             </div>
-          </a>
+          </a> -->
           <a class="m-top-5px" mat-list-item routerLink="/remiseria/passengers">
             <div class="flex flex-col nav-center">
               <span class="material-icons icon"> directions_run </span>
               <span class="text-sm t-center text-white">Pasajeros</span>
+            </div>
+          </a>
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/tariff">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> attach_money </span>
+              <span class="text-sm t-center text-white">Tarifario</span>
             </div>
           </a>
           <!-- <a class="m-top-5px" mat-list-item routerLink="/admin/order-status">
@@ -82,11 +97,7 @@
           </a> -->
         </div>
       </a>
-      <a
-        mat-list-item
-        routerLink="/my-account/profile"
-        class="unselectable settings"
-      >
+      <a mat-list-item routerLink="/my-account/profile" class="unselectable settings">
         <div class="flex flex-col nav-center m-auto">
           <span class="material-icons icon"> settings </span>
           <span class="text-sm t-center text-white">Editar mi perfil</span>
@@ -102,21 +113,12 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="bg-blue-navbar" style="height: 75px">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>
-        <img
-          src="./../../../../../../assets/LogoBarra.png"
-          alt=""
-          class="imgLogoBarra"
-        />
+        <img src="./../../../../../../assets/LogoBarra.png" alt="" class="imgLogoBarra" />
       </span>
     </mat-toolbar>
     <router-outlet></router-outlet>

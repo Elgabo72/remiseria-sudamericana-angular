@@ -8,6 +8,7 @@ import { RolesComponent } from './subpages/roles/roles.component';
 import { DriversComponent } from './subpages/drivers/drivers.component';
 import { VehiclesComponent } from './subpages/vehicles/vehicles.component';
 import { PassengersComponent } from './subpages/passengers/passengers.component';
+import { TariffComponent } from './subpages/tariff/tariff.component';
 
 const routes: Routes = [
     {
@@ -42,6 +43,10 @@ const routes: Routes = [
             {
                 path: 'passengers',
                 component: PassengersComponent
+            },
+            {
+                path: 'tariff',
+                component: TariffComponent
             },
             // {
             //     path: 'vendors',
