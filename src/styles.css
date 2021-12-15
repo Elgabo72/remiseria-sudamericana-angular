@@ -70,16 +70,17 @@ td.mat-footer-cell:last-of-type {
 }
 .vtn-emergente {
   background-color: rgb(255, 255, 255);
-  border: 1px solid black;
+  border: none;
   border-radius: 10px;
-  margin: 2% auto 2% 15%;
+  margin: 0 auto 2% 15%;
   width: 36rem;
-  max-height: 30rem;
+  max-height: 32rem;
   position: fixed;
   display: none;
   z-index: 1;
   padding: 0.5%;
   overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.56) 0 0 0 100vw;
 }
 .vtn-emergente::-webkit-scrollbar {
   display: none;
@@ -87,9 +88,9 @@ td.mat-footer-cell:last-of-type {
 .btn-cerrar {
   color: rgb(170, 57, 57);
   font-size: 1.5rem;
-  margin-left: 90%;
+  margin-left: 95%;
   margin-right: 0%;
-  padding: 5px 5px;
+  padding: 0 5px;
   cursor: pointer;
 }
 .col-1 {

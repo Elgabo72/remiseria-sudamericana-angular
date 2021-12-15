@@ -26,6 +26,7 @@ export class TariffComponent implements OnInit {
     'Origin',
     'Destination',
     'Amount',
+    'Status',
     'Actions',
   ];
   ocultado = 'd-none';
