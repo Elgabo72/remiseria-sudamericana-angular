@@ -9,6 +9,7 @@ import { DriversComponent } from './subpages/drivers/drivers.component';
 import { VehiclesComponent } from './subpages/vehicles/vehicles.component';
 import { PassengersComponent } from './subpages/passengers/passengers.component';
 import { TariffComponent } from './subpages/tariff/tariff.component';
+import { ReservationComponent } from './subpages/reservation/reservation.component';
 
 const routes: Routes = [
     {
@@ -47,6 +48,10 @@ const routes: Routes = [
             {
                 path: 'tariff',
                 component: TariffComponent
+            },
+            {
+                path: 'reservation',
+                component: ReservationComponent
             },
             // {
             //     path: 'vendors',

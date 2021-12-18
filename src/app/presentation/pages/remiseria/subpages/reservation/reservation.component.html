@@ -1,0 +1,19 @@
+<app-header-custom title="Administracion de" subtitle="Reservaciones">
+    <span class="material-icons icon"> event_note </span>
+</app-header-custom>
+<select>
+    <option *ngFor="let DstatusReservation of stateReservation" [value]="DstatusReservation.idStateReservation">
+        {{DstatusReservation.description}}</option>
+</select>
+<app-spinner [show]="showSpinner"></app-spinner>
+<div class="cont-reservas">
+    <div class="cont-card-reservas" *ngFor="let Dreserva of reservationList">
+        <div class="card-reservas">
+            <a class="c-card-reserva">{{Dreserva.stateReservation?.description}}</a>
+            <label class="lbl-card-detalle">Codigo: {{Dreserva.idReservation}}</label>
+            <label class="lbl-card-detalle">Origen: {{Dreserva.tariff?.origin}}</label>
+            <label class="lbl-card-detalle">Destino: {{Dreserva.tariff?.destination}}</label>
+            <button class="btnDetalleReserva">Ver Detalle</button>
+        </div>
+    </div>
+</div>

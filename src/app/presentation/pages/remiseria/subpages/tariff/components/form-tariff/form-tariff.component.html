@@ -29,7 +29,7 @@
             <div class="form-group">
                 <mat-form-field appearance="fill">
                     <mat-label class="block">Monto</mat-label>
-                    <input matInput maxlength="150" [(ngModel)]="data.amount" #amount="ngModel" name="amount" required
+                    <input matInput maxlength="150" min="10" [(ngModel)]="data.amount" #amount="ngModel" name="amount" required
                         minlength="1" type="number" />
                 </mat-form-field>
                 <div class="
@@ -84,7 +84,7 @@
         <input type="hidden" [(ngModel)]="data.idTariff" #password="ngModel" name="idTariff" />
         <!-- buttons actions -->
         <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="createUpdateTariff()"
-            [disabled]="!productsForm.form.valid">
+            [disabled]="!productsForm.form.valid || data.amount==0">
             <i class="mr-2 fas fa-save"></i>{{ this.update ? "Update" : "Guardar" }}
         </button>
     </form>

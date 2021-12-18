@@ -68,6 +68,58 @@ td.mat-footer-cell:last-of-type {
 .flex-col {
   flex-direction: column;
 }
+.lbl-card-detalle{
+  display: block;
+  padding: calc(0.1vh + 0.1vw) 1rem;
+  font-size: calc(0.1vh + 1vw);
+}
+.c-card-reserva{
+  background: #2f3946;
+  color: white !important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 1vh 1vw;
+  width: 100%;
+  margin: auto;
+  display: block;
+  border: none;
+  border-top-left-radius: 0.55vw;
+  border-top-right-radius: 0.55vw;
+  margin-bottom: 1vh;
+  text-align: center;
+  font-size: calc(0.1vh + 1vw);
+}
+.cont-reservas {
+  width: 100%;
+  height: 70vh;
+  padding: 1vh 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.cont-card-reservas {
+  max-height: 100%;
+  padding: 1rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5vh 2vw;
+  overflow: auto;
+}
+.cont-card-reservas::-webkit-scrollbar{
+  width: 5px;
+  background: rgb(255, 255, 255);
+}
+.cont-card-reservas::-webkit-scrollbar-thumb{
+  background: rgba(99, 99, 99, 0.898);
+  border-radius: 5px;
+}
+.card-reservas {
+  /* background: rgb(140, 61, 61); */
+  height: calc(10rem + 1.5rem);
+  border-radius: 4%;
+  box-shadow: -4px -4px 20px -11px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: -4px -2px 23px -9px rgba(0, 0, 0, 0.6);
+}
 .vtn-emergente {
   background-color: rgb(255, 255, 255);
   border: none;
@@ -85,6 +137,7 @@ td.mat-footer-cell:last-of-type {
 .vtn-emergente::-webkit-scrollbar {
   display: none;
 }
+/*Botones*/
 .btn-cerrar {
   color: rgb(170, 57, 57);
   font-size: 1.5rem;
@@ -93,6 +146,22 @@ td.mat-footer-cell:last-of-type {
   padding: 0 5px;
   cursor: pointer;
 }
+.btnDetalleReserva {
+  background: #2f3946;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 1vh 1vw;
+  width: 50%;
+  margin: 1vh auto 1vh auto;
+  display: block;
+  border: none;
+  border-radius: 0.55vw;
+  font-size: calc(0.1vh + 1vw);
+  cursor: pointer;
+  transition: ease-in-out 0.4s background-color;
+}
+/*--------------------*/
 .col-1 {
   display: inline;
   float: left;
@@ -129,4 +198,15 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+@media only screen and (min-width: 1600px) {
+  .card-reservas {
+    height: calc(12rem + 1.5rem);
+  }
+  .cont-card-reservas {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .cont-reservas {
+    height: 80vh;
+  }
 }

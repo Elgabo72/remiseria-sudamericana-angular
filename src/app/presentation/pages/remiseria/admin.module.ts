@@ -18,6 +18,8 @@ import { HeaderCustomComponent } from './components/header-custom/header-custom.
 import { FormPassengerComponent } from './subpages/passengers/components/form-passenger/form-passenger.component';
 import { TariffComponent } from './subpages/tariff/tariff.component';
 import { FormTariffComponent } from './subpages/tariff/components/form-tariff/form-tariff.component';
+import { ReservationComponent } from './subpages/reservation/reservation.component';
+import { FormReservationComponent } from './subpages/reservation/components/form-reservation/form-reservation.component';
 
 
 
@@ -36,7 +38,9 @@ import { FormTariffComponent } from './subpages/tariff/components/form-tariff/fo
     PassengersComponent,
     FormPassengerComponent,
     TariffComponent,
-    FormTariffComponent
+    FormTariffComponent,
+    ReservationComponent,
+    FormReservationComponent
   ],
   imports: [
     ComponentsModule,
