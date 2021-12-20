@@ -14,6 +14,9 @@ export class ReservationComponent implements OnInit {
     private tariffService:TariffControllerService,
     private stateService: StateReservationControllerService 
   ) { }
+
+  activeModal = false;
+  activeUpdated = false;
   currentReservation: Reservation = {}
 
   tariff : Tariff[] = []
@@ -25,19 +28,40 @@ export class ReservationComponent implements OnInit {
   showSpinner = true;
 
   ngOnInit(): void {
+    this.cargarStatusReservation()
   }
   
   ngAfterViewInit(): void {
     this.loadData();
   }
+
+  closeModal(show: boolean): void {
+    this.activeModal = false;
+    this.activeUpdated = false;
+    this.refreshList();
+  }
+  refreshList(): void {
+    // console.log("me ejecuto");
+    this.ocultado = 'd-none';
+    this.showSpinner = true;
+    this.loadData()
+  }
+
+  editReservationInModal(reservation: Reservation) {
+    this.currentReservation = reservation;
+    this.activeModal = true;
+    this.activeUpdated = true;
+    console.log(reservation)
+
+  }
   loadData(): void {
     setTimeout(() => {
       this.service.getAllUsingGET2().subscribe((reservation) => {
-        this.reservationList = reservation;
+        this.reservationList = reservation.reverse()
         console.log(reservation);
 
         this.cargarDriver()
-        this.cargarStatusReservation()
+        this.ocultado = reservation.length == 0 ? 'd-none' : '';
         this.showSpinner = false;
       });
     }, 2000);
@@ -50,6 +74,25 @@ export class ReservationComponent implements OnInit {
   cargarStatusReservation() {
     this.stateService.getAllUsingGET4().subscribe((stateReserva) => {
       this.stateReservation = stateReserva});
+  }
+
+  
+  getColor(state:any) {
+    switch (state) {
+      case 'PENDIENTE':
+        return 'rgb(169, 52, 52)';
+      case 'ACEPTADO/EN CAMINO':
+        return '#39d15f';
+      case 'ACEPTADO/EN ESPERA':
+        return '#2a6f3b';
+      case 'EN VIAJE':
+        return '#d3aa04';
+      case 'VIAJE REALIZADO':
+        return '#1d1b6a';
+      case 'CANCELADO':
+        return 'black';
+        default:return '#2f3946'  
+    }
   }
 
   
