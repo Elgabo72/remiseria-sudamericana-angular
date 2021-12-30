@@ -105,7 +105,7 @@ export class ReservationComponent implements OnInit {
           this.cargarDriver()
           this.ocultado = reservation.length == 0 ? 'd-none' : '';
           this.showSpinner = false;
-          cod=cod
+          this.cod=0
         });
       }, 2000);
     }
