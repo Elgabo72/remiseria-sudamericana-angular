@@ -1,8 +1,9 @@
 <app-header-custom title="Administracion de" subtitle="Reservaciones">
     <span class="material-icons icon"> event_note </span>
 </app-header-custom>
-<select class="CbxStateReservarion">
-    <option *ngFor="let DstatusReservation of stateReservation" [value]="DstatusReservation.idStateReservation">
+<select class="CbxStateReservarion" #selectList (change)="refreshListFilter(selectList.value)">
+    <option value="" selected="selected">--- Filtrar Reservas ---</option>
+    <option *ngFor="let DstatusReservation of stateReservation" value="{{DstatusReservation.idStateReservation}}" >
         {{DstatusReservation.description}}</option>
 </select>
 <app-spinner [show]="showSpinner"></app-spinner>
@@ -13,7 +14,8 @@
 <div class="cont-reservas {{ ocultado }}" onload="asignarColor()">
     <div class="cont-card-reservas">
         <div class="card-reservas" *ngFor="let Dreserva of reservationList">
-            <a class="c-card-reserva" [ngStyle]="{'background':getColor(Dreserva.stateReservation?.description)}">{{Dreserva.stateReservation?.description}}</a>
+            <a class="c-card-reserva"
+                [ngStyle]="{'background':getColor(Dreserva.stateReservation?.description)}">{{Dreserva.stateReservation?.description}}</a>
             <label class="lbl-card-detalle">Codigo: {{Dreserva.idReservation}}</label>
             <label class="lbl-card-detalle">Origen: {{Dreserva.tariff?.origin}}</label>
             <label class="lbl-card-detalle">Destino: {{Dreserva.tariff?.destination}}</label>

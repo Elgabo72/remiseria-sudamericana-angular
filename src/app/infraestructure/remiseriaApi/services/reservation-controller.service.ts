@@ -8,6 +8,7 @@ import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
 import { Reservation } from '../models/reservation';
+import { FilterReservationDto } from '../models/filter-reservation-dto';
 
 /**
  * Reservation Controller
@@ -19,6 +20,8 @@ class ReservationControllerService extends __BaseService {
   static readonly saveUsingPOST2Path = '/api/reservation';
   static readonly updateUsingPUT2Path = '/api/reservation';
   static readonly getAllUsingGET2Path = '/api/reservation/all';
+  static readonly filterByTravelDateUsingPOSTPath = '/api/reservation/filterByTravelDate';
+  static readonly getByIdStateReservationUsingGETPath = '/api/reservation/findByIdStateReservation/{idStateReservation}';
   static readonly getByIdUsingGET2Path = '/api/reservation/{id}';
   static readonly deleteUsingDELETE2Path = '/api/reservation/{id}';
 
@@ -136,6 +139,82 @@ class ReservationControllerService extends __BaseService {
    */
   getAllUsingGET2(): __Observable<Array<Reservation>> {
     return this.getAllUsingGET2Response().pipe(
+      __map(_r => _r.body as Array<Reservation>)
+    );
+  }
+
+  /**
+   * Filter reservation by dates
+   * @param data data
+   * @return OK
+   */
+  filterByTravelDateUsingPOSTResponse(data: FilterReservationDto): __Observable<__StrictHttpResponse<Array<Reservation>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = data;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/reservation/filterByTravelDate`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<Reservation>>;
+      })
+    );
+  }
+  /**
+   * Filter reservation by dates
+   * @param data data
+   * @return OK
+   */
+  filterByTravelDateUsingPOST(data: FilterReservationDto): __Observable<Array<Reservation>> {
+    return this.filterByTravelDateUsingPOSTResponse(data).pipe(
+      __map(_r => _r.body as Array<Reservation>)
+    );
+  }
+
+  /**
+   * Search by idStateReservation
+   * @param idStateReservation The id of state Reservation
+   * @return OK
+   */
+  getByIdStateReservationUsingGETResponse(idStateReservation: number): __Observable<__StrictHttpResponse<Array<Reservation>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/reservation/findByIdStateReservation/${encodeURIComponent(String(idStateReservation))}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<Reservation>>;
+      })
+    );
+  }
+  /**
+   * Search by idStateReservation
+   * @param idStateReservation The id of state Reservation
+   * @return OK
+   */
+  getByIdStateReservationUsingGET(idStateReservation: number): __Observable<Array<Reservation>> {
+    return this.getByIdStateReservationUsingGETResponse(idStateReservation).pipe(
       __map(_r => _r.body as Array<Reservation>)
     );
   }

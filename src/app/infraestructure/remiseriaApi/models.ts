@@ -1,6 +1,7 @@
 export { AuthenticationRequest } from './models/authentication-request';
 export { AuthenticationResponse } from './models/authentication-response';
 export { CreateUserDto } from './models/create-user-dto';
+export { FilterReservationDto } from './models/filter-reservation-dto';
 export { ModelAndView } from './models/model-and-view';
 export { Payment } from './models/payment';
 export { Permission } from './models/permission';

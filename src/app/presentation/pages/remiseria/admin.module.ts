@@ -20,6 +20,8 @@ import { TariffComponent } from './subpages/tariff/tariff.component';
 import { FormTariffComponent } from './subpages/tariff/components/form-tariff/form-tariff.component';
 import { ReservationComponent } from './subpages/reservation/reservation.component';
 import { FormReservationComponent } from './subpages/reservation/components/form-reservation/form-reservation.component';
+import { PaymentsComponent } from './subpages/payments/payments.component';
+import { FormPaymentsComponent } from './subpages/payments/components/form-payments/form-payments.component';
 
 
 
@@ -40,7 +42,9 @@ import { FormReservationComponent } from './subpages/reservation/components/form
     TariffComponent,
     FormTariffComponent,
     ReservationComponent,
-    FormReservationComponent
+    FormReservationComponent,
+    PaymentsComponent,
+    FormPaymentsComponent
   ],
   imports: [
     ComponentsModule,

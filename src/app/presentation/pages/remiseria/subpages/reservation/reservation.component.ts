@@ -19,6 +19,8 @@ export class ReservationComponent implements OnInit {
   activeUpdated = false;
   currentReservation: Reservation = {}
 
+  cod:any=0
+
   tariff : Tariff[] = []
   stateReservation: StateReservation[] = [];
   reservationList: Reservation[] = [];
@@ -44,7 +46,13 @@ export class ReservationComponent implements OnInit {
     // console.log("me ejecuto");
     this.ocultado = 'd-none';
     this.showSpinner = true;
-    this.loadData()
+    this.filterForState(this.cod)
+  }
+  refreshListFilter(cod:any): void {
+    // console.log("me ejecuto");
+    this.ocultado = 'd-none';
+    this.showSpinner = true;
+    this.filterForState(cod)
   }
 
   editReservationInModal(reservation: Reservation) {
@@ -54,12 +62,13 @@ export class ReservationComponent implements OnInit {
     console.log(reservation)
 
   }
+
   loadData(): void {
     setTimeout(() => {
-      this.service.getAllUsingGET2().subscribe((reservation) => {
+      this.service.getAllUsingGET2().subscribe((reservation) =>{
         this.reservationList = reservation.reverse()
         console.log(reservation);
-
+        
         this.cargarDriver()
         this.ocultado = reservation.length == 0 ? 'd-none' : '';
         this.showSpinner = false;
@@ -76,7 +85,33 @@ export class ReservationComponent implements OnInit {
       this.stateReservation = stateReserva});
   }
 
-  
+  filterForState(cod:any){
+    if(cod!=0){
+      setTimeout(() => {
+        this.service.getByIdStateReservationUsingGET(cod).subscribe((reservation) =>{
+          this.reservationList = reservation.reverse()
+    
+          this.cargarDriver()
+          this.ocultado = reservation.length == 0 ? 'd-none' : '';
+          this.showSpinner = false;
+          this.cod=cod
+        });
+      }, 1000);
+    }else{
+      setTimeout(() => {
+        this.service.getAllUsingGET2().subscribe((reservation) =>{
+          this.reservationList = reservation.reverse()
+          
+          this.cargarDriver()
+          this.ocultado = reservation.length == 0 ? 'd-none' : '';
+          this.showSpinner = false;
+          cod=cod
+        });
+      }, 2000);
+    }
+    
+  }
+
   getColor(state:any) {
     switch (state) {
       case 'PENDIENTE':
