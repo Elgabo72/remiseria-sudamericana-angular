@@ -20,6 +20,7 @@ import { CreateUserDto } from '../models/create-user-dto';
 })
 class AuthControllerService extends __BaseService {
   static readonly createTokenUsingPOSTPath = '/api/auth/authenticate';
+  static readonly createTokenPassengersUsingPOSTPath = '/api/auth/authenticatePassengers';
   static readonly saveUserUsingPOSTPath = '/api/auth/register';
 
   constructor(
@@ -63,6 +64,44 @@ class AuthControllerService extends __BaseService {
    */
   createTokenUsingPOST(request: AuthenticationRequest): __Observable<AuthenticationResponse> {
     return this.createTokenUsingPOSTResponse(request).pipe(
+      __map(_r => _r.body as AuthenticationResponse)
+    );
+  }
+
+  /**
+   * createTokenPassengers
+   * @param request request
+   * @return OK
+   */
+  createTokenPassengersUsingPOSTResponse(request: AuthenticationRequest): __Observable<__StrictHttpResponse<AuthenticationResponse>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = request;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/auth/authenticatePassengers`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<AuthenticationResponse>;
+      })
+    );
+  }
+  /**
+   * createTokenPassengers
+   * @param request request
+   * @return OK
+   */
+  createTokenPassengersUsingPOST(request: AuthenticationRequest): __Observable<AuthenticationResponse> {
+    return this.createTokenPassengersUsingPOSTResponse(request).pipe(
       __map(_r => _r.body as AuthenticationResponse)
     );
   }

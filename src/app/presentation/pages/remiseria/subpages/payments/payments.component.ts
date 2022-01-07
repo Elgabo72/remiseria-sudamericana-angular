@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, enableProdMode, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Payment } from 'src/app/infraestructure/remiseriaApi/models';
@@ -68,9 +68,26 @@ export class PaymentsComponent implements OnInit {
   }
   filterForDate(data: FormFilterData): void {
     if (data.init && data.init != null) {
-      
+      this.loadPaymentsListFilterDate(data.init, data.end);
     }
 
+  }
+  loadPaymentsListFilterDate(init: string, end: string): void {
+    console.log({
+      dateEnd: `${end}T23:59:59`,
+      dateInit: `${init}T00:00:00`
+    });
+    this.service.filterByTravelDateUsingPOST({
+      dateEnd: `${end} 23:59:59`,
+      dateInit: `${init} 00:00:00`
+    }).subscribe((payments) => {
+      this.paymentList = payments;
+      console.log(payments);
+
+      this.chargingTableList();
+      this.ocultado = payments.length == 0 ? 'd-none' : '';
+      this.showSpinner = false;
+    });
   }
   handlerClickRegister(): void {
     this.activeModal = !this.activeModal;

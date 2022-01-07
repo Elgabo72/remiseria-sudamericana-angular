@@ -8,6 +8,7 @@ import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
 import { Payment } from '../models/payment';
+import { FilterReservationDto } from '../models/filter-reservation-dto';
 
 /**
  * Payment Controller
@@ -19,6 +20,7 @@ class PaymentControllerService extends __BaseService {
   static readonly saveUsingPOSTPath = '/api/payment';
   static readonly updateUsingPUTPath = '/api/payment';
   static readonly getAllUsingGETPath = '/api/payment/all';
+  static readonly filterByTravelDateUsingPOSTPath = '/api/payment/filterByTravelDate';
   static readonly getByIdUsingGETPath = '/api/payment/{id}';
   static readonly deleteUsingDELETEPath = '/api/payment/{id}';
 
@@ -136,6 +138,44 @@ class PaymentControllerService extends __BaseService {
    */
   getAllUsingGET(): __Observable<Array<Payment>> {
     return this.getAllUsingGETResponse().pipe(
+      __map(_r => _r.body as Array<Payment>)
+    );
+  }
+
+  /**
+   * Filter payment by dates
+   * @param data data
+   * @return OK
+   */
+  filterByTravelDateUsingPOSTResponse(data: FilterReservationDto): __Observable<__StrictHttpResponse<Array<Payment>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = data;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/payment/filterByTravelDate`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<Payment>>;
+      })
+    );
+  }
+  /**
+   * Filter payment by dates
+   * @param data data
+   * @return OK
+   */
+  filterByTravelDateUsingPOST(data: FilterReservationDto): __Observable<Array<Payment>> {
+    return this.filterByTravelDateUsingPOSTResponse(data).pipe(
       __map(_r => _r.body as Array<Payment>)
     );
   }

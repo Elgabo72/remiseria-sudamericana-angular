@@ -20,7 +20,7 @@ class ReservationControllerService extends __BaseService {
   static readonly saveUsingPOST2Path = '/api/reservation';
   static readonly updateUsingPUT2Path = '/api/reservation';
   static readonly getAllUsingGET2Path = '/api/reservation/all';
-  static readonly filterByTravelDateUsingPOSTPath = '/api/reservation/filterByTravelDate';
+  static readonly filterByTravelDateUsingPOST1Path = '/api/reservation/filterByTravelDate';
   static readonly getByIdStateReservationUsingGETPath = '/api/reservation/findByIdStateReservation/{idStateReservation}';
   static readonly getByIdUsingGET2Path = '/api/reservation/{id}';
   static readonly deleteUsingDELETE2Path = '/api/reservation/{id}';
@@ -148,7 +148,7 @@ class ReservationControllerService extends __BaseService {
    * @param data data
    * @return OK
    */
-  filterByTravelDateUsingPOSTResponse(data: FilterReservationDto): __Observable<__StrictHttpResponse<Array<Reservation>>> {
+  filterByTravelDateUsingPOST1Response(data: FilterReservationDto): __Observable<__StrictHttpResponse<Array<Reservation>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -175,8 +175,8 @@ class ReservationControllerService extends __BaseService {
    * @param data data
    * @return OK
    */
-  filterByTravelDateUsingPOST(data: FilterReservationDto): __Observable<Array<Reservation>> {
-    return this.filterByTravelDateUsingPOSTResponse(data).pipe(
+  filterByTravelDateUsingPOST1(data: FilterReservationDto): __Observable<Array<Reservation>> {
+    return this.filterByTravelDateUsingPOST1Response(data).pipe(
       __map(_r => _r.body as Array<Reservation>)
     );
   }
