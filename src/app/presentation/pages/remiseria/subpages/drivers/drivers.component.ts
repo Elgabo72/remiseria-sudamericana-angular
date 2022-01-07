@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/infraestructure/remiseriaApi/models';
 import { UserControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
 import { Roles } from 'src/app/infraestructure/shared/RoleEnum';
 import Swal from 'sweetalert2';
 
@@ -40,6 +41,20 @@ export class DriversComponent implements OnInit {
   }
   ngAfterViewInit(): void {
     this.loadClientList();
+  }
+
+  downloadExcel(): void {
+    // formatear la data para imprimirla correctamente en el excel
+    const data = this.employeList.map(employee => {
+      return {
+        "#": employee.idUser,
+        "Nombre Completo": employee.firstName + " " + employee.lastName,
+        "Status": employee.active ? "Activo" : "Inactivo",
+        "Email": employee.email,
+      }
+    });
+
+    exportExcel(data, 'reporte-choferes');
   }
 
   //methods modal

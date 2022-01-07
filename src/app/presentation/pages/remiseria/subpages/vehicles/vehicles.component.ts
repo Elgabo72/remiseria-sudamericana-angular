@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { User, Vehicle } from 'src/app/infraestructure/remiseriaApi/models';
 import { UserControllerService, VehicleControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
 import { Roles } from 'src/app/infraestructure/shared/RoleEnum';
 import Swal from 'sweetalert2';
 
@@ -48,6 +49,23 @@ export class VehiclesComponent implements OnInit {
     this.loadData();
   }
 
+  downloadExcel(): void {
+    // formatear la data para imprimirla correctamente en el excel
+    const data = this.vehicleList.map(vehicle => {
+      return {
+        "#": vehicle.idVehicle,
+        "Descripcion": vehicle.description,
+        "Marca": vehicle.mark,
+        "Modelo": vehicle.model,
+        "Placa": vehicle.plaque,
+        "Tipo": vehicle.type,
+        "Chofer": vehicle.user?.lastName + ' ' + vehicle.user?.firstName,
+        "Estado": vehicle.active ? "Activo" : "Inactivo",
+      }
+    });
+
+    exportExcel(data, 'reporte-vehiculos');
+  }
   //methods modal
 
   closeModal(show: boolean): void {
@@ -103,8 +121,8 @@ export class VehiclesComponent implements OnInit {
   }
   cargarDriver() {
     this.driverService
-    .getByIdRoleUsingGET(Roles.CHOFER)
-    .subscribe((driver) => (this.drivers = driver));
+      .getByIdRoleUsingGET(Roles.CHOFER)
+      .subscribe((driver) => (this.drivers = driver));
   }
   chargingTableList(): void {
     this.dataSource = new MatTableDataSource<Vehicle>(this.vehicleList);
