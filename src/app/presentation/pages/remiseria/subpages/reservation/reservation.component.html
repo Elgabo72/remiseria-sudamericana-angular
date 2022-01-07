@@ -25,6 +25,7 @@
   </button>
 </div>
 <app-spinner [show]="showSpinner"></app-spinner>
+<app-filter-date-form (submit)="filterForDate($event)"></app-filter-date-form>
 <div
   class="vtn-emergente"
   [ngStyle]="{ display: activeModal ? 'block' : 'none' }"

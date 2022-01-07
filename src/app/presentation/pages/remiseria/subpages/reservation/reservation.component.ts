@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Reservation, StateReservation, Tariff } from 'src/app/infraestructure/remiseriaApi/models';
 import { ReservationControllerService, StateReservationControllerService, TariffControllerService } from 'src/app/infraestructure/remiseriaApi/services';
 import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
+import { FormFilterData } from '../../components/filter-date-form/filter-date-form.component';
 
 @Component({
   selector: 'app-reservation',
@@ -37,6 +38,31 @@ export class ReservationComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.loadData();
+  }
+
+  filterForDate(data: FormFilterData): void {
+    if (data.init && data.init != null) {
+      this.loadPaymentsListFilterDate(data.init, data.end);
+    }
+
+  }
+
+  loadPaymentsListFilterDate(init: string, end: string): void {
+    console.log({
+      dateEnd: `${end}T23:59:59`,
+      dateInit: `${init}T00:00:00`
+    });
+    this.service.filterByTravelDateUsingPOST1({
+      dateEnd: `${end} 23:59:59`,
+      dateInit: `${init} 00:00:00`
+    }).subscribe((reservation) => {
+      this.reservationList = reservation.reverse()
+      console.log(reservation);
+
+      this.cargarDriver()
+      this.ocultado = reservation.length == 0 ? 'd-none' : '';
+      this.showSpinner = false;
+    });
   }
   downloadExcel(): void {
     // formatear la data para imprimirla correctamente en el excel
