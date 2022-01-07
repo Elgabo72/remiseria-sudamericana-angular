@@ -3,6 +3,13 @@
   margin: 0;
   padding: 0;
 }
+.btn-export-excel {
+  background-color: #21aa93;
+  color: white;
+  padding: 11px 13px;
+  border-radius: 15px;
+  border: none;
+}
 #contenedor_carga {
   background-color: rgba(250, 240, 245, 0.9);
   height: 100%;
@@ -68,13 +75,13 @@ td.mat-footer-cell:last-of-type {
 .flex-col {
   flex-direction: column;
 }
-.lbl-card-detalle{
+.lbl-card-detalle {
   display: block;
   padding: calc(0.1vh + 0.1vw) 1rem;
   font-size: calc(0.1vh + 1vw);
 }
 
-.c-card-reserva{
+.c-card-reserva {
   background: rgb(169, 52, 52);
   color: white !important;
   font-family: Arial, Helvetica, sans-serif;
@@ -106,11 +113,11 @@ td.mat-footer-cell:last-of-type {
   gap: 5vh 2vw;
   overflow: auto;
 }
-.cont-card-reservas::-webkit-scrollbar{
+.cont-card-reservas::-webkit-scrollbar {
   width: 5px;
   background: rgb(255, 255, 255);
 }
-.cont-card-reservas::-webkit-scrollbar-thumb{
+.cont-card-reservas::-webkit-scrollbar-thumb {
   background: rgba(99, 99, 99, 0.898);
   border-radius: 5px;
 }
@@ -168,7 +175,7 @@ td.mat-footer-cell:last-of-type {
 }
 /*--------------------*/
 /*------Combobox------*/
-.CbxStateReservarion{
+.CbxStateReservarion {
   float: right;
   margin: 0 1rem;
   border: none;
@@ -176,7 +183,7 @@ td.mat-footer-cell:last-of-type {
   border-bottom: solid 1px #2f3946;
   background: transparent;
 }
-.CbxStateReservarion:focus{
+.CbxStateReservarion:focus {
   border-bottom: solid 1px rgb(39, 36, 253);
 }
 /*----------------------*/
