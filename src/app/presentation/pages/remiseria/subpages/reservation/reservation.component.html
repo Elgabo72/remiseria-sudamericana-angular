@@ -1,25 +1,59 @@
 <app-header-custom title="Administracion de" subtitle="Reservaciones">
-    <span class="material-icons icon"> event_note </span>
+  <span class="material-icons icon"> event_note </span>
 </app-header-custom>
-<select class="CbxStateReservarion" #selectList (change)="refreshListFilter(selectList.value)">
-    <option value="" selected="selected">--- Filtrar Reservas ---</option>
-    <option *ngFor="let DstatusReservation of stateReservation" value="{{DstatusReservation.idStateReservation}}" >
-        {{DstatusReservation.description}}</option>
+<select
+  class="CbxStateReservarion"
+  #selectList
+  (change)="refreshListFilter(selectList.value)"
+>
+  <option value="" selected="selected">--- Filtrar Reservas ---</option>
+  <option
+    *ngFor="let DstatusReservation of stateReservation"
+    value="{{ DstatusReservation.idStateReservation }}"
+  >
+    {{ DstatusReservation.description }}
+  </option>
 </select>
+
+<button class="centre btn mc" (click)="downloadExcel()" *ngIf="!showSpinner">Download</button>
 <app-spinner [show]="showSpinner"></app-spinner>
-<div class="vtn-emergente" [ngStyle]="{ display: activeModal ? 'block' : 'none' }">
-    <app-form-reservation [show]="activeModal" [update]="activeUpdated" [reservation]="currentReservation"
-        (refreshList)="refreshList()" (closeModalEvent)="closeModal($event)"></app-form-reservation>
+<div
+  class="vtn-emergente"
+  [ngStyle]="{ display: activeModal ? 'block' : 'none' }"
+>
+  <app-form-reservation
+    [show]="activeModal"
+    [update]="activeUpdated"
+    [reservation]="currentReservation"
+    (refreshList)="refreshList()"
+    (closeModalEvent)="closeModal($event)"
+  ></app-form-reservation>
 </div>
 <div class="cont-reservas {{ ocultado }}" onload="asignarColor()">
-    <div class="cont-card-reservas">
-        <div class="card-reservas" *ngFor="let Dreserva of reservationList">
-            <a class="c-card-reserva"
-                [ngStyle]="{'background':getColor(Dreserva.stateReservation?.description)}">{{Dreserva.stateReservation?.description}}</a>
-            <label class="lbl-card-detalle">Codigo: {{Dreserva.idReservation}}</label>
-            <label class="lbl-card-detalle">Origen: {{Dreserva.tariff?.origin}}</label>
-            <label class="lbl-card-detalle">Destino: {{Dreserva.tariff?.destination}}</label>
-            <button class="btnDetalleReserva" (click)="editReservationInModal(Dreserva)">Ver Detalle</button>
-        </div>
+  <div class="cont-card-reservas">
+    <div class="card-reservas" *ngFor="let Dreserva of reservationList">
+      <a
+        class="c-card-reserva"
+        [ngStyle]="{
+          background: getColor(Dreserva.stateReservation?.description)
+        }"
+        >{{ Dreserva.stateReservation?.description }}</a
+      >
+      <label class="lbl-card-detalle"
+        >Codigo: {{ Dreserva.idReservation }}</label
+      >
+      <label class="lbl-card-detalle"
+        >Origen: {{ Dreserva.tariff?.origin }}</label
+      >
+      <label class="lbl-card-detalle"
+        >Destino: {{ Dreserva.tariff?.destination }}</label
+      >
+      <button
+        class="btnDetalleReserva"
+        (click)="editReservationInModal(Dreserva)"
+      >
+        Ver Detalle
+      </button>
     </div>
+  </div>
 </div>

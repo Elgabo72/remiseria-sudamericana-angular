@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation, StateReservation, Tariff } from 'src/app/infraestructure/remiseriaApi/models';
 import { ReservationControllerService, StateReservationControllerService, TariffControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
 
 @Component({
   selector: 'app-reservation',
@@ -10,18 +11,17 @@ import { ReservationControllerService, StateReservationControllerService, Tariff
 export class ReservationComponent implements OnInit {
 
   constructor
-  (private service: ReservationControllerService,
-    private tariffService:TariffControllerService,
-    private stateService: StateReservationControllerService 
-  ) { }
+    (private service: ReservationControllerService,
+      private tariffService: TariffControllerService,
+      private stateService: StateReservationControllerService
+    ) { }
 
   activeModal = false;
   activeUpdated = false;
   currentReservation: Reservation = {}
+  cod: any = 0
 
-  cod:any=0
-
-  tariff : Tariff[] = []
+  tariff: Tariff[] = []
   stateReservation: StateReservation[] = [];
   reservationList: Reservation[] = [];
   dataSource: any = null;
@@ -29,14 +29,32 @@ export class ReservationComponent implements OnInit {
   ocultado = 'd-none';
   showSpinner = true;
 
+
+
   ngOnInit(): void {
     this.cargarStatusReservation()
   }
-  
+
   ngAfterViewInit(): void {
     this.loadData();
   }
+  downloadExcel(): void {
+    // formatear la data para imprimirla correctamente en el excel
+    const data = this.reservationList.map(reservation => {
+      return {
+        "#": reservation.idReservation,
+        "Fecha de Viaje": reservation.travelDate,
+        "Descripcion": reservation.description,
+        "Precio": reservation.tariff?.amount,
+        "Estado": reservation.stateReservation?.description,
+        "Pasajero": reservation.passenger?.firstName + " " + reservation.passenger?.lastName,
+        "Chofer": reservation.passenger?.firstName + " " + reservation.passenger?.lastName,
 
+      }
+    });
+    exportExcel(data, 'reporte-reservaciones');
+
+  }
   closeModal(show: boolean): void {
     this.activeModal = false;
     this.activeUpdated = false;
@@ -48,7 +66,7 @@ export class ReservationComponent implements OnInit {
     this.showSpinner = true;
     this.filterForState(this.cod)
   }
-  refreshListFilter(cod:any): void {
+  refreshListFilter(cod: any): void {
     // console.log("me ejecuto");
     this.ocultado = 'd-none';
     this.showSpinner = true;
@@ -64,55 +82,56 @@ export class ReservationComponent implements OnInit {
   }
 
   loadData(): void {
-    setTimeout(() => {
-      this.service.getAllUsingGET2().subscribe((reservation) =>{
-        this.reservationList = reservation.reverse()
-        console.log(reservation);
-        
-        this.cargarDriver()
-        this.ocultado = reservation.length == 0 ? 'd-none' : '';
-        this.showSpinner = false;
-      });
-    }, 2000);
+    // setTimeout(() => {
+    this.service.getAllUsingGET2().subscribe((reservation) => {
+      this.reservationList = reservation.reverse()
+      console.log(reservation);
+
+      this.cargarDriver()
+      this.ocultado = reservation.length == 0 ? 'd-none' : '';
+      this.showSpinner = false;
+    });
+    // }, 2000);
   }
   cargarDriver() {
     this.tariffService
-    .getAllUsingGET5()
-    .subscribe((Tariff) => (this.tariff = Tariff));
+      .getAllUsingGET5()
+      .subscribe((Tariff) => (this.tariff = Tariff));
   }
   cargarStatusReservation() {
     this.stateService.getAllUsingGET4().subscribe((stateReserva) => {
-      this.stateReservation = stateReserva});
+      this.stateReservation = stateReserva
+    });
   }
 
-  filterForState(cod:any){
-    if(cod!=0){
+  filterForState(cod: any) {
+    if (cod != 0) {
       setTimeout(() => {
-        this.service.getByIdStateReservationUsingGET(cod).subscribe((reservation) =>{
+        this.service.getByIdStateReservationUsingGET(cod).subscribe((reservation) => {
           this.reservationList = reservation.reverse()
-    
+
           this.cargarDriver()
           this.ocultado = reservation.length == 0 ? 'd-none' : '';
           this.showSpinner = false;
-          this.cod=cod
+          this.cod = cod
         });
       }, 1000);
-    }else{
+    } else {
       setTimeout(() => {
-        this.service.getAllUsingGET2().subscribe((reservation) =>{
+        this.service.getAllUsingGET2().subscribe((reservation) => {
           this.reservationList = reservation.reverse()
-          
+
           this.cargarDriver()
           this.ocultado = reservation.length == 0 ? 'd-none' : '';
           this.showSpinner = false;
-          this.cod=0
+          this.cod = 0
         });
       }, 2000);
     }
-    
+
   }
 
-  getColor(state:any) {
+  getColor(state: any) {
     switch (state) {
       case 'PENDIENTE':
         return 'rgb(169, 52, 52)';
@@ -126,9 +145,9 @@ export class ReservationComponent implements OnInit {
         return '#1d1b6a';
       case 'CANCELADO':
         return 'black';
-        default:return '#2f3946'  
+      default: return '#2f3946'
     }
   }
 
-  
+
 }
