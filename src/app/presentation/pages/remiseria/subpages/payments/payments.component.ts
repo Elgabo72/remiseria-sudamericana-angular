@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Payment } from 'src/app/infraestructure/remiseriaApi/models';
 import { PaymentControllerService } from 'src/app/infraestructure/remiseriaApi/services';
 import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
+import { FormFilterData } from '../../components/filter-date-form/filter-date-form.component';
 
 @Component({
   selector: 'app-payments',
@@ -64,6 +65,12 @@ export class PaymentsComponent implements OnInit {
     });
 
     exportExcel(data, 'reporte-pagos');
+  }
+  filterForDate(data: FormFilterData): void {
+    if (data.init && data.init != null) {
+      
+    }
+
   }
   handlerClickRegister(): void {
     this.activeModal = !this.activeModal;

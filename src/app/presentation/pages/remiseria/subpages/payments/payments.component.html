@@ -26,6 +26,10 @@
     <app-spinner [show]="showSpinner"></app-spinner>
     <!-- <div *ngIf="!showSpinner && paymentList.length != 0"> -->
 
+    <app-filter-date-form
+      (submit)="filterForDate($event)"
+    ></app-filter-date-form>
+
     <div
       class="vtn-emergente"
       [ngStyle]="{ display: activeModal ? 'block' : 'none' }"

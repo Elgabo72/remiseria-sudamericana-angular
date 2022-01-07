@@ -1,0 +1,46 @@
+<div class="row justify-content-center my-2">
+  <div class="col-md-4">
+    <form
+      #filterForm="ngForm"
+      class="d-flex justify-content-center flex-column"
+    >
+      <h4 class="font-weight-bold text-center">Filtro por Fechas</h4>
+      <mat-form-field appearance="fill">
+        <mat-label class="block">Fecha de Inicio </mat-label>
+        <input
+          matInput
+          maxlength="150"
+          [(ngModel)]="filterData.init"
+          #filterInit="ngModel"
+          name="filterInit"
+          required
+          minlength="1"
+          type="date"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label class="block">Fecha de Fin </mat-label>
+        <input
+          matInput
+          maxlength="150"
+          [(ngModel)]="filterData.end"
+          #filterEnd="ngModel"
+          name="filterEnd"
+          required
+          minlength="1"
+          type="date"
+        />
+      </mat-form-field>
+      <button
+        mat-flat-button
+        color="primary"
+        class="text-white w-100 h6"
+        (click)="filterForDate()"
+        [disabled]="!filterForm.form.valid"
+      >
+        <i class="mr-2 fas fa-save"></i>Filtrar por Fecha
+      </button>
+    </form>
+  </div>
+</div>

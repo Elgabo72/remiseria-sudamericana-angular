@@ -22,6 +22,7 @@ import { ReservationComponent } from './subpages/reservation/reservation.compone
 import { FormReservationComponent } from './subpages/reservation/components/form-reservation/form-reservation.component';
 import { PaymentsComponent } from './subpages/payments/payments.component';
 import { FormPaymentsComponent } from './subpages/payments/components/form-payments/form-payments.component';
+import { FilterDateFormComponent } from './components/filter-date-form/filter-date-form.component';
 
 
 
@@ -44,7 +45,8 @@ import { FormPaymentsComponent } from './subpages/payments/components/form-payme
     ReservationComponent,
     FormReservationComponent,
     PaymentsComponent,
-    FormPaymentsComponent
+    FormPaymentsComponent,
+    FilterDateFormComponent,
   ],
   imports: [
     ComponentsModule,
@@ -55,6 +57,7 @@ import { FormPaymentsComponent } from './subpages/payments/components/form-payme
     // LayoutModule,
     // SharedModule,
     FormsModule,
+    
   ]
 })
 export class AdminModule { }
