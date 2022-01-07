@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Payment } from 'src/app/infraestructure/remiseriaApi/models';
 import { PaymentControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
 
 @Component({
   selector: 'app-payments',
@@ -11,13 +12,13 @@ import { PaymentControllerService } from 'src/app/infraestructure/remiseriaApi/s
 })
 export class PaymentsComponent implements OnInit {
 
-  constructor(private service:PaymentControllerService ) { }
+  constructor(private service: PaymentControllerService) { }
 
   activeModal = false;
   activeUpdated = false;
   currentPayment: Payment = {}
 
-  paymentList : Payment[]=[]
+  paymentList: Payment[] = []
   dataSource: any = null;
 
   ocultado = 'd-none';
@@ -48,19 +49,35 @@ export class PaymentsComponent implements OnInit {
     this.showSpinner = true;
     this.loadPaymentsList()
   }
+
+  downloadExcel(): void {
+    // formatear la data para imprimirla correctamente en el excel
+    const data = this.paymentList.map(data => {
+      return {
+        "#": data.idPayment,
+        "Chofer": data.driver?.lastName + " " + data.driver?.firstName,
+        "Vehiculo": data.vehicle?.plaque,
+        "Empleado": data.employee?.lastName + " " + data.employee?.firstName,
+        "Monto": data.amount?.toFixed(2),
+        "Fecha de Pago": data.dateCreated,
+      }
+    });
+
+    exportExcel(data, 'reporte-pagos');
+  }
   handlerClickRegister(): void {
     this.activeModal = !this.activeModal;
     this.currentPayment = {};
   }
   loadPaymentsList(): void {
-      this.service.getAllUsingGET().subscribe((payments) => {
-        this.paymentList = payments;
-        console.log(payments);
+    this.service.getAllUsingGET().subscribe((payments) => {
+      this.paymentList = payments;
+      console.log(payments);
 
-        this.chargingTableList();
-        this.ocultado = payments.length == 0 ? 'd-none' : '';
-        this.showSpinner = false;
-      });
+      this.chargingTableList();
+      this.ocultado = payments.length == 0 ? 'd-none' : '';
+      this.showSpinner = false;
+    });
   }
   chargingTableList(): void {
     this.dataSource = new MatTableDataSource<Payment>(this.paymentList);
