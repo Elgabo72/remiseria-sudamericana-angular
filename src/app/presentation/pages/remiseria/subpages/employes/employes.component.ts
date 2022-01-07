@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/infraestructure/remiseriaApi/models';
 import { UserControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -39,6 +40,20 @@ export class EmployesComponent implements OnInit {
   }
   ngAfterViewInit(): void {
     this.loadData();
+  }
+
+  downloadExcel(): void {
+    // formatear la data para imprimirla correctamente en el excel
+    const data = this.employeList.map(employee => {
+      return {
+        "#": employee.idUser,
+        "Nombre Completo": employee.firstName + " " + employee.lastName,
+        "Status": employee.active ? "Activo" : "Inactivo",
+        "Email": employee.email,
+      }
+    });
+
+    exportExcel(data, 'reporte-empleados');
   }
 
   //methods modal
@@ -82,16 +97,16 @@ export class EmployesComponent implements OnInit {
 
   // methods with API
   loadData(): void {
-    setTimeout(() => {
-      this.service.getAllEmployesUsingGET().subscribe((employes) => {
-        this.employeList = employes;
-        console.log(employes);
 
-        this.chargingTableList();
-        this.ocultado = employes.length == 0 ? 'd-none' : '';
-        this.showSpinner = false;
-      });
-    }, 2000);
+    this.service.getAllEmployesUsingGET().subscribe((employes) => {
+      this.employeList = employes;
+      console.log(employes);
+
+      this.chargingTableList();
+      this.ocultado = employes.length == 0 ? 'd-none' : '';
+      this.showSpinner = false;
+    });
+
   }
 
   chargingTableList(): void {

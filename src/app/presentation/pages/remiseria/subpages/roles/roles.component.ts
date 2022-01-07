@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Role } from 'src/app/infraestructure/remiseriaApi/models';
 import { RoleControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -36,6 +37,17 @@ export class RolesComponent implements OnInit {
     this.loadRoleList();
   }
 
+  downloadExcel(): void {
+    // formatear la data para imprimirla correctamente en el excel
+    const data = this.roleList.map(data => {
+      return {
+        "#": data.idRole,
+        "Descripcion": data.description,
+      }
+    });
+
+    exportExcel(data, 'reporte-choferes');
+  }
   //methods modal
 
   closeModal(show: boolean): void {
@@ -75,7 +87,6 @@ export class RolesComponent implements OnInit {
 
   // methods with API
   loadRoleList(): void {
-    setTimeout(() => {
       this.service.getAllUsingGET3().subscribe((roles) => {
         this.roleList = roles;
         console.log(roles);
@@ -84,7 +95,6 @@ export class RolesComponent implements OnInit {
         this.ocultado = roles.length == 0 ? 'd-none' : '';
         this.showSpinner = false;
       });
-    }, 2000);
   }
   chargingTableList(): void {
     this.dataSource = new MatTableDataSource<Role>(this.roleList);

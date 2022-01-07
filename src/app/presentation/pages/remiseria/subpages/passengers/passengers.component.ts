@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/infraestructure/remiseriaApi/models';
 import { UserControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
 import { Roles } from 'src/app/infraestructure/shared/RoleEnum';
 import Swal from 'sweetalert2';
 
@@ -42,6 +43,19 @@ export class PassengersComponent implements OnInit {
     this.loadClientList();
   }
 
+  downloadExcel(): void {
+    // formatear la data para imprimirla correctamente en el excel
+    const data = this.employeList.map(data => {
+      return {
+        "#": data.idUser,
+        "Nombre Completo": data.firstName + " " + data.lastName,
+        "Status": data.active ? "Activo" : "Inactivo",
+        "Email": data.email,
+      }
+    });
+
+    exportExcel(data, 'reporte-pasajeros');
+  }
   //methods modal
 
   closeModal(show: boolean): void {
@@ -83,16 +97,14 @@ export class PassengersComponent implements OnInit {
 
   // methods with API
   loadClientList(): void {
-    setTimeout(() => {
-      this.service.getByIdRoleUsingGET(Roles.PASAJERO).subscribe((employes) => {
-        this.employeList = employes;
-        console.log(employes);
+    this.service.getByIdRoleUsingGET(Roles.PASAJERO).subscribe((employes) => {
+      this.employeList = employes;
+      console.log(employes);
 
-        this.chargingTableList();
-        this.ocultado = employes.length == 0 ? 'd-none' : '';
-        this.showSpinner = false;
-      });
-    }, 2000);
+      this.chargingTableList();
+      this.ocultado = employes.length == 0 ? 'd-none' : '';
+      this.showSpinner = false;
+    });
   }
 
   chargingTableList(): void {

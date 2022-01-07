@@ -108,7 +108,6 @@ export class VehiclesComponent implements OnInit {
 
   // methods with API
   loadData(): void {
-    setTimeout(() => {
       this.service.getAllUsingGET7().subscribe((vehicle) => {
         this.vehicleList = vehicle;
         console.log(vehicle);
@@ -117,7 +116,6 @@ export class VehiclesComponent implements OnInit {
         this.ocultado = vehicle.length == 0 ? 'd-none' : '';
         this.showSpinner = false;
       });
-    }, 2000);
   }
   cargarDriver() {
     this.driverService

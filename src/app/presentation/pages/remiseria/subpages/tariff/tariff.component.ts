@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tariff } from 'src/app/infraestructure/remiseriaApi/models';
 import { TariffControllerService } from 'src/app/infraestructure/remiseriaApi/services';
+import { exportExcel } from 'src/app/infraestructure/shared/exportExcel';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -39,6 +40,21 @@ export class TariffComponent implements OnInit {
   }
   ngAfterViewInit(): void {
     this.loadData();
+  }
+
+  downloadExcel(): void {
+    // formatear la data para imprimirla correctamente en el excel
+    const data = this.tariffList.map(data => {
+      return {
+        "#": data.idTariff,
+        "Origen": data.origin,
+        "Destination": data.destination,
+        "Amount": data.amount?.toFixed(2),
+        "Status": data.active ? "Activo" : "Inactivo",
+      }
+    });
+
+    exportExcel(data, 'reporte-tarifas');
   }
 
   //methods modal
@@ -82,16 +98,14 @@ export class TariffComponent implements OnInit {
 
   // methods with API
   loadData(): void {
-    setTimeout(() => {
-      this.service.getAllUsingGET5().subscribe((tariff) => {
-        this.tariffList = tariff;
-        console.log(tariff);
+    this.service.getAllUsingGET5().subscribe((tariff) => {
+      this.tariffList = tariff;
+      console.log(tariff);
 
-        this.chargingTableList();
-        this.ocultado = tariff.length == 0 ? 'd-none' : '';
-        this.showSpinner = false;
-      });
-    }, 2000);
+      this.chargingTableList();
+      this.ocultado = tariff.length == 0 ? 'd-none' : '';
+      this.showSpinner = false;
+    });
   }
 
   chargingTableList(): void {

@@ -53,7 +53,6 @@ export class PaymentsComponent implements OnInit {
     this.currentPayment = {};
   }
   loadPaymentsList(): void {
-    setTimeout(() => {
       this.service.getAllUsingGET().subscribe((payments) => {
         this.paymentList = payments;
         console.log(payments);
@@ -62,7 +61,6 @@ export class PaymentsComponent implements OnInit {
         this.ocultado = payments.length == 0 ? 'd-none' : '';
         this.showSpinner = false;
       });
-    }, 2000);
   }
   chargingTableList(): void {
     this.dataSource = new MatTableDataSource<Payment>(this.paymentList);

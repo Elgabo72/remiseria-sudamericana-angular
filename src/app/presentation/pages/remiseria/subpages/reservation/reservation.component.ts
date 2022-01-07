@@ -82,7 +82,6 @@ export class ReservationComponent implements OnInit {
   }
 
   loadData(): void {
-    // setTimeout(() => {
     this.service.getAllUsingGET2().subscribe((reservation) => {
       this.reservationList = reservation.reverse()
       console.log(reservation);
@@ -91,7 +90,6 @@ export class ReservationComponent implements OnInit {
       this.ocultado = reservation.length == 0 ? 'd-none' : '';
       this.showSpinner = false;
     });
-    // }, 2000);
   }
   cargarDriver() {
     this.tariffService
@@ -106,27 +104,23 @@ export class ReservationComponent implements OnInit {
 
   filterForState(cod: any) {
     if (cod != 0) {
-      setTimeout(() => {
-        this.service.getByIdStateReservationUsingGET(cod).subscribe((reservation) => {
-          this.reservationList = reservation.reverse()
+      this.service.getByIdStateReservationUsingGET(cod).subscribe((reservation) => {
+        this.reservationList = reservation.reverse()
 
-          this.cargarDriver()
-          this.ocultado = reservation.length == 0 ? 'd-none' : '';
-          this.showSpinner = false;
-          this.cod = cod
-        });
-      }, 1000);
+        this.cargarDriver()
+        this.ocultado = reservation.length == 0 ? 'd-none' : '';
+        this.showSpinner = false;
+        this.cod = cod
+      });
     } else {
-      setTimeout(() => {
-        this.service.getAllUsingGET2().subscribe((reservation) => {
-          this.reservationList = reservation.reverse()
+      this.service.getAllUsingGET2().subscribe((reservation) => {
+        this.reservationList = reservation.reverse()
 
-          this.cargarDriver()
-          this.ocultado = reservation.length == 0 ? 'd-none' : '';
-          this.showSpinner = false;
-          this.cod = 0
-        });
-      }, 2000);
+        this.cargarDriver()
+        this.ocultado = reservation.length == 0 ? 'd-none' : '';
+        this.showSpinner = false;
+        this.cod = 0
+      });
     }
 
   }

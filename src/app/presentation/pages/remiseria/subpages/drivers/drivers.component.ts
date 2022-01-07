@@ -98,16 +98,14 @@ export class DriversComponent implements OnInit {
 
   // methods with API
   loadClientList(): void {
-    setTimeout(() => {
-      this.service.getByIdRoleUsingGET(Roles.CHOFER).subscribe((employes) => {
-        this.employeList = employes;
-        console.log(employes);
+    this.service.getByIdRoleUsingGET(Roles.CHOFER).subscribe((employes) => {
+      this.employeList = employes;
+      console.log(employes);
 
-        this.chargingTableList();
-        this.ocultado = employes.length == 0 ? 'd-none' : '';
-        this.showSpinner = false;
-      });
-    }, 2000);
+      this.chargingTableList();
+      this.ocultado = employes.length == 0 ? 'd-none' : '';
+      this.showSpinner = false;
+    });
   }
 
   chargingTableList(): void {
