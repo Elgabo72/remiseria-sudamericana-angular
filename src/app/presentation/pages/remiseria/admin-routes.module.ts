@@ -11,6 +11,11 @@ import { PassengersComponent } from './subpages/passengers/passengers.component'
 import { TariffComponent } from './subpages/tariff/tariff.component';
 import { ReservationComponent } from './subpages/reservation/reservation.component';
 import { PaymentsComponent } from './subpages/payments/payments.component';
+import {accessReception} from '../../guards/accessReception.guard'
+import {accessPayment} from '../../guards/accessPayment.guard'
+import {accessAdmin} from '../../guards/accessAdmin.guard'
+import { WelcomeComponent } from './subpages/welcome/welcome.component';
+import { AccessDeniedComponent } from './subpages/access-denied/access-denied.component';
 
 const routes: Routes = [
     {
@@ -19,7 +24,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'dashboard',
+                redirectTo: 'welcome',
                 pathMatch: 'full'
             },
             {
@@ -28,35 +33,43 @@ const routes: Routes = [
             },
             {
                 path: 'employes',
-                component: EmployesComponent
+                component: EmployesComponent, canActivate:[accessAdmin]
             },
             {
                 path: 'roles',
-                component: RolesComponent
+                component: RolesComponent, canActivate:[accessAdmin]
             },
             {
                 path: 'drivers',
-                component: DriversComponent
+                component: DriversComponent, canActivate:[accessReception]
             },
             {
                 path: 'vehicles',
-                component: VehiclesComponent
+                component: VehiclesComponent, canActivate:[accessReception]
             },
             {
                 path: 'passengers',
-                component: PassengersComponent
+                component: PassengersComponent, canActivate:[accessAdmin]
             },
             {
                 path: 'tariff',
-                component: TariffComponent
+                component: TariffComponent, canActivate:[accessAdmin]
             },
             {
                 path: 'reservation',
-                component: ReservationComponent
+                component: ReservationComponent, canActivate:[accessReception]
             },
             {
                 path: 'payments',
-                component: PaymentsComponent
+                component: PaymentsComponent, canActivate:[accessPayment]
+            },
+            {
+                path: 'welcome',
+                component: WelcomeComponent
+            },
+            {
+                path: 'accessDenied',
+                component: AccessDeniedComponent
             },
             // {
             //     path: 'vendors',

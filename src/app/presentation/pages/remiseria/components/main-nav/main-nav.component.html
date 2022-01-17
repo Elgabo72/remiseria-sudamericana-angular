@@ -15,7 +15,7 @@
     <mat-horizontal-stepper class="separator" style="margin-bottom: 20px">
     </mat-horizontal-stepper>
     <mat-nav-list>
-      <a class="m-top-5px" mat-list-item class="img-hover unselectable">
+      <a class="m-top-5px" mat-list-item class="img-hover unselectable" *ngIf="(user.role?.description=='recepcionista')||(user.role?.description=='admin')">
         <div class="flex flex-col nav-center">
           <span class="material-icons icon"> desktop_windows </span>
           <span class="text-sm t-center text-white">Recepción</span>
@@ -41,7 +41,7 @@
           </a>
         </div>
       </a>
-      <a class="m-top-5px" mat-list-item class="img-hover unselectable">
+      <a class="m-top-5px" mat-list-item class="img-hover unselectable" *ngIf="(user.role?.description=='caja')||(user.role?.description=='admin')">
         <div class="flex flex-col nav-center">
           <span class="material-icons icon"> shopping_bag </span>
           <span class="text-sm t-center text-white">Caja</span>
@@ -55,7 +55,7 @@
           </a>
         </div>
       </a>
-      <a class="m-top-5px" mat-list-item class="img-hover unselectable">
+      <a class="m-top-5px" mat-list-item class="img-hover unselectable" *ngIf="user.role?.description=='admin'">
         <div class="flex flex-col nav-center">
           <span class="material-icons icon"> build </span>
           <span class="text-sm t-center text-white">Administración</span>

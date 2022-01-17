@@ -21,6 +21,7 @@ class ReservationControllerService extends __BaseService {
   static readonly updateUsingPUT2Path = '/api/reservation';
   static readonly getAllUsingGET2Path = '/api/reservation/all';
   static readonly filterByTravelDateUsingPOST1Path = '/api/reservation/filterByTravelDate';
+  static readonly getByidPassengerUsingGETPath = '/api/reservation/findByIdPassenger/{idPassenger}';
   static readonly getByIdStateReservationUsingGETPath = '/api/reservation/findByIdStateReservation/{idStateReservation}';
   static readonly getByIdUsingGET2Path = '/api/reservation/{id}';
   static readonly deleteUsingDELETE2Path = '/api/reservation/{id}';
@@ -177,6 +178,44 @@ class ReservationControllerService extends __BaseService {
    */
   filterByTravelDateUsingPOST1(data: FilterReservationDto): __Observable<Array<Reservation>> {
     return this.filterByTravelDateUsingPOST1Response(data).pipe(
+      __map(_r => _r.body as Array<Reservation>)
+    );
+  }
+
+  /**
+   * Search by idPassenger
+   * @param idPassenger The id of passenger
+   * @return OK
+   */
+  getByidPassengerUsingGETResponse(idPassenger: number): __Observable<__StrictHttpResponse<Array<Reservation>>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/reservation/findByIdPassenger/${encodeURIComponent(String(idPassenger))}`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<Array<Reservation>>;
+      })
+    );
+  }
+  /**
+   * Search by idPassenger
+   * @param idPassenger The id of passenger
+   * @return OK
+   */
+  getByidPassengerUsingGET(idPassenger: number): __Observable<Array<Reservation>> {
+    return this.getByidPassengerUsingGETResponse(idPassenger).pipe(
       __map(_r => _r.body as Array<Reservation>)
     );
   }

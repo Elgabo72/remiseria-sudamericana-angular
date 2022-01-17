@@ -19,7 +19,9 @@ export class MainNavComponent {
     private loginService: LoginService
   ) {
     this.user = this.loginService.getUser();
+    console.log(this.user)
   }
+  
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -29,5 +31,6 @@ export class MainNavComponent {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
+  
 
 }

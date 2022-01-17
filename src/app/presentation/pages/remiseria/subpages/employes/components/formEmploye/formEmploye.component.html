@@ -8,19 +8,7 @@
           <input matInput maxlength="150" [(ngModel)]="employe.firstName" #name="ngModel" name="name" required
             minlength="1" />
         </mat-form-field>
-        <div class="
-            inline-flex
-            items-center
-            p-1
-            px-2
-            my-1
-            text-xs
-            leading-none
-            text-gray-800
-            bg-red-100
-            rounded-full
-            font-weight-bold
-          " *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div class="inline-flex items-center p-1 px-2 my-1 text-xs leading-none text-gray-800 bg-red-100 rounded-full font-weight-bold" *ngIf="name.invalid && (name.dirty || name.touched)">
           <div class="" *ngIf="name.errors?.required">
             Se requiere el nombre
           </div>

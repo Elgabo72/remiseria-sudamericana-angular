@@ -12,8 +12,8 @@ import { LoginService } from '../../infraestructure/auth/login.service';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginGuard implements CanActivate {
-  constructor(private router: Router, private loginService: LoginService) { }
+export class accessPayment implements CanActivate {
+  constructor(private loginService: LoginService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -22,11 +22,13 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.loginService.isLogged()) {
-      // this.loginService.logout();
-      return this.router.navigate(['/remiseria/welcome']);
+    if (this.loginService.getUser()?.role?.description === 'caja' || this.loginService.getUser()?.role?.description === 'admin') {
+        return true;
     } else {
-      return true;
+      this.router.navigate(['/remiseria/accessDenied']);
+      
+      return false;
     }
+    
   }
 }

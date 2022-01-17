@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
           console.log(res)
           if (res.status == 200) {
             this.loginService.saveJWT(res.body.jwt ?? "", res.body.user ?? {});
-            this.router.navigate(['/remiseria/dashboard'])
+            this.router.navigate(['/remiseria/welcome'])
           };
 
         },

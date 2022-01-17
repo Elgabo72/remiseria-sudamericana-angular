@@ -21,6 +21,7 @@ class UserControllerService extends __BaseService {
   static readonly getAllUsingGET6Path = '/api/user/all';
   static readonly getAllEmployesUsingGETPath = '/api/user/allEmployes';
   static readonly getByIdRoleUsingGETPath = '/api/user/findByRole/{id}';
+  static readonly updatePassengerUsingPUTPath = '/api/user/updatePassenger';
   static readonly getByIdUsingGET6Path = '/api/user/{id}';
   static readonly deleteUsingDELETE6Path = '/api/user/{id}';
 
@@ -212,6 +213,44 @@ class UserControllerService extends __BaseService {
   getByIdRoleUsingGET(id: number): __Observable<Array<User>> {
     return this.getByIdRoleUsingGETResponse(id).pipe(
       __map(_r => _r.body as Array<User>)
+    );
+  }
+
+  /**
+   * Update a User
+   * @param user user
+   * @return OK
+   */
+  updatePassengerUsingPUTResponse(user: User): __Observable<__StrictHttpResponse<User>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = user;
+    let req = new HttpRequest<any>(
+      'PUT',
+      this.rootUrl + `/api/user/updatePassenger`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<User>;
+      })
+    );
+  }
+  /**
+   * Update a User
+   * @param user user
+   * @return OK
+   */
+  updatePassengerUsingPUT(user: User): __Observable<User> {
+    return this.updatePassengerUsingPUTResponse(user).pipe(
+      __map(_r => _r.body as User)
     );
   }
 
