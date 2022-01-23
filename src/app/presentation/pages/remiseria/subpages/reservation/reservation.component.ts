@@ -57,7 +57,7 @@ export class ReservationComponent implements OnInit {
       dateInit: `${init} 00:00:00`
     }).subscribe((reservation) => {
       this.reservationList = reservation.reverse()
-      console.log(reservation);
+      // console.log(reservation);
 
       this.cargarDriver()
       this.ocultado = reservation.length == 0 ? 'd-none' : '';
@@ -103,15 +103,17 @@ export class ReservationComponent implements OnInit {
     this.currentReservation = reservation;
     this.activeModal = true;
     this.activeUpdated = true;
-    console.log(reservation)
+    // console.log(reservation)
 
   }
 
   loadData(): void {
     this.service.getAllUsingGET2().subscribe((reservation) => {
       this.reservationList = reservation.reverse()
-      console.log(reservation);
-
+      // console.log(reservation);
+      // console.log(this.cod)
+      
+      this.ListFor5seg()
       this.cargarDriver()
       this.ocultado = reservation.length == 0 ? 'd-none' : '';
       this.showSpinner = false;
@@ -128,6 +130,13 @@ export class ReservationComponent implements OnInit {
     });
   }
 
+  ListFor5seg(){
+    setTimeout(() => {
+      this.filterForState(this.cod)
+      // console.log("actualizacion correcta")
+      this.ListFor5seg()
+    }, 5000);
+  }
   filterForState(cod: any) {
     if (cod != 0) {
       this.service.getByIdStateReservationUsingGET(cod).subscribe((reservation) => {

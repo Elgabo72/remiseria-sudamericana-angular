@@ -159,7 +159,7 @@ td.mat-footer-cell:last-of-type {
   background-color: rgb(255, 255, 255);
   border: none;
   border-radius: 10px;
-  margin: 0 auto 2% 15%;
+  margin: 0 auto 0 15%;
   width: 36rem;
   max-height: 32rem;
   position: fixed;
@@ -168,7 +168,7 @@ td.mat-footer-cell:last-of-type {
   padding: 0.5%;
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.56) 0 0 0 100vw;
-  bottom: 200px;
+  top: 5rem;
 }
 .vtn-emergente::-webkit-scrollbar {
   display: none;

@@ -25,9 +25,8 @@ export class accessPayment implements CanActivate {
     if (this.loginService.getUser()?.role?.description === 'caja' || this.loginService.getUser()?.role?.description === 'admin') {
         return true;
     } else {
-      this.router.navigate(['/remiseria/accessDenied']);
       
-      return false;
+      return this.router.navigate(['/remiseria/accessDenied']);
     }
     
   }

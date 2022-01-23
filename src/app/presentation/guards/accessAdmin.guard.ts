@@ -25,8 +25,7 @@ export class accessAdmin implements CanActivate {
     if (this.loginService.getUser()?.role?.description === 'admin') {
         return true;
     } else {
-      this.router.navigate(['/remiseria/accessDenied']);
-      return false;
+      return this.router.navigate(['/remiseria/accessDenied']);
     }
     
   }

@@ -1,8 +1,8 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const prod = false;
-const urlDomainProduction = 'https://spring.luismeramosr.ml';
+const prod = true;
+const urlDomainProduction = 'https://remiseria-spring-boot-heroku.herokuapp.com';
 const urlDomainDev = 'http://localhost:8080';
 const urlDomain = prod ? urlDomainProduction : urlDomainDev;
 export const environment = {

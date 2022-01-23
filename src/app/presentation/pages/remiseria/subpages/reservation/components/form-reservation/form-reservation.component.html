@@ -1,4 +1,4 @@
-<div style="text-align: center">
+<div style="text-align: center;">
     <a class="btn-cerrar" (click)="closeModal()"><span class="material-icons icon"> close </span></a>
     <form #productsForm="ngForm" id="form" class="row p-4">
         <div class="col-md-6">
@@ -90,7 +90,7 @@
         <!-- buttons actions -->
         <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="createUpdateVehicle()"
             [disabled]="!productsForm.form.valid">
-            <i class="mr-2 fas fa-save"></i>{{ this.update ? "Update" : "Save" }}
+            <i class="mr-2 fas fa-save"></i>{{ this.update ? "Actualizar" : "Guardar" }}
         </button>
     </form>
 </div>
