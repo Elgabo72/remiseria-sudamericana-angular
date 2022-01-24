@@ -31,8 +31,8 @@ export class FormRoleComponent implements OnInit {
     if (!this.update) {
       this.roleService.saveUsingPOST3(this.data).subscribe((res) => {
         Swal.fire(
-          'Nueva Role Creado',
-          `Empleado ${res.description} ha sido registrado`,
+          'Nuevo Rol Creado',
+          `Rol ${res.description} ha sido registrado`,
           'success'
         );
 
