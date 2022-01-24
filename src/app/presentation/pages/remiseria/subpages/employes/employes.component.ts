@@ -71,7 +71,7 @@ export class EmployesComponent implements OnInit {
   }
   handlerClickRegister(): void {
     this.activeModal = true;
-    this.currentUser = {};
+    this.currentUser = { active: true };
   }
 
   editEmployeInModal(employe: User) {
