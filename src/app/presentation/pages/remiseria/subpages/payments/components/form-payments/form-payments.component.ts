@@ -37,8 +37,6 @@ export class FormPaymentsComponent implements OnInit {
   }
 
   createUpdatePayment(): void {
-    //  crea el cliente, luego le redirije
-    // if (!this.update) {
       this.data.idEmployee = this.employee.idUser;
       this.paymentService.saveUsingPOST(this.data).subscribe((res) => {
         Swal.fire(
@@ -48,17 +46,6 @@ export class FormPaymentsComponent implements OnInit {
         );
 
       });
-    // } else {
-
-    //   this.roleService.updateUsingPUT3(this.data).subscribe((employe) => {
-    //     Swal.fire(
-    //       'Rol Actualizado',
-    //       `Rol ${employe.description} ha sido actualizado`,
-    //       'success'
-    //     );
-    //   });
-
-    // }
     this.closeModal();
     this.refreshListEvent();
   }

@@ -13,7 +13,7 @@ export class FormDriversComponent implements OnInit {
 
   @Input() show: boolean = false;
   @Input() update: boolean = false;
-  @Input() employe: User = {};
+  @Input() driver: User = {};
   @Output() closeModalEvent: EventEmitter<boolean> = new EventEmitter();
   @Output() refreshList: EventEmitter<void> = new EventEmitter();
 
@@ -24,15 +24,12 @@ export class FormDriversComponent implements OnInit {
   // employe: User = {}
   role: Role[] = []
   ngOnInit(): void {
-    this.employe.idUser = this.employe.idUser ?? 0;
+    this.driver.idUser = this.driver.idUser ?? 0;
   }
 
-  createUpdateEmploye(): void {
-    //  crea el cliente, luego le redirije
-    console.log(this.employe);
-
+  createUpdateDriver(): void {
     if (!this.update) {
-      this.userService.saveUsingPOST6({ ...this.employe, idRol: Roles.CHOFER ,password:""}).subscribe((res) => {
+      this.userService.saveUsingPOST6({ ...this.driver, idRol: Roles.CHOFER ,password:""}).subscribe((res) => {
         Swal.fire(
           'Nueva Chofer Creado',
           `Chofer ${res.firstName} ha sido registrado`,
@@ -42,17 +39,17 @@ export class FormDriversComponent implements OnInit {
       });
     } else {
 
-      this.userService.updateUsingPUT6(this.employe).subscribe((employe) => {
+      this.userService.updateUsingPUT6(this.driver).subscribe((drivers) => {
         Swal.fire(
           'Chofer Actualizado',
-          `Chofer ${employe.firstName} ha sido actualizado`,
+          `Chofer ${drivers.firstName} ha sido actualizado`,
           'success'
         );
       });
 
     }
-    this.closeModal();
     this.refreshListEvent();
+    this.closeModal();
   }
 
   closeModal(): void {

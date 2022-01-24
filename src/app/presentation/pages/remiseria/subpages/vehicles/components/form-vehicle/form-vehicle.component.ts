@@ -32,9 +32,6 @@ export class FormVehicleComponent implements OnInit {
   }
 
   createUpdateVehicle(): void {
-    //  crea el cliente, luego le redirije
-    console.log(this.vehicle);
-
     if (!this.update) {
       this.vehicleService.saveUsingPOST7(this.vehicle).subscribe((res) => {
         Swal.fire(

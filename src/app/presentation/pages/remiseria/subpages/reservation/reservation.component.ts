@@ -21,6 +21,7 @@ export class ReservationComponent implements OnInit {
   activeUpdated = false;
   currentReservation: Reservation = {}
   cod: any = 0
+  ffencendido : boolean = false
 
   tariff: Tariff[] = []
   stateReservation: StateReservation[] = [];
@@ -30,7 +31,8 @@ export class ReservationComponent implements OnInit {
   ocultado = 'd-none';
   showSpinner = true;
 
-
+  init : string = ""
+  end : string = ""
 
   ngOnInit(): void {
     this.cargarStatusReservation()
@@ -43,6 +45,8 @@ export class ReservationComponent implements OnInit {
   filterForDate(data: FormFilterData): void {
     if (data.init && data.init != null) {
       this.loadPaymentsListFilterDate(data.init, data.end);
+      this.ffencendido=true
+      
     }
 
   }
@@ -132,20 +136,28 @@ export class ReservationComponent implements OnInit {
 
   ListFor5seg(){
     setTimeout(() => {
-      this.filterForState(this.cod)
-      // console.log("actualizacion correcta")
-      this.ListFor5seg()
+      if(this.ffencendido==true){
+        this.filterForDate
+        this.ListFor5seg()
+        // console.log("se activo filtro por fecha")
+      }else if(this.ffencendido==false){
+        this.filterForState(this.cod)
+        // console.log("se activo el filtro por estados")
+        this.ListFor5seg()
+        
+      }
     }, 5000);
   }
   filterForState(cod: any) {
     if (cod != 0) {
       this.service.getByIdStateReservationUsingGET(cod).subscribe((reservation) => {
         this.reservationList = reservation.reverse()
-
+        this.ffencendido=false
         this.cargarDriver()
         this.ocultado = reservation.length == 0 ? 'd-none' : '';
         this.showSpinner = false;
         this.cod = cod
+        
       });
     } else {
       this.service.getAllUsingGET2().subscribe((reservation) => {
