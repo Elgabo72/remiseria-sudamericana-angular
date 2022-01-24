@@ -75,6 +75,7 @@ export class EmployesComponent implements OnInit {
   }
 
   editEmployeInModal(employe: User) {
+    employe.password = '';
     this.currentUser = employe;
     this.activeModal = true;
     this.activeUpdated = true;
