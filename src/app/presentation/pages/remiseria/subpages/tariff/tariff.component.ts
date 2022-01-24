@@ -72,7 +72,7 @@ export class TariffComponent implements OnInit {
   }
   handlerClickRegister(): void {
     this.activeModal = true;
-    this.currentTariff = {};
+    this.currentTariff = { active: true };
   }
 
   editTariffInModal(tariff: Tariff) {
