@@ -75,8 +75,8 @@ export class RolesComponent implements OnInit {
   deleteRole(role: Role) {
     this.service.deleteUsingDELETE3(role.idRole ?? 0).subscribe((res) => {
       Swal.fire(
-        'Role Eliminado',
-        `Empleado ${role.description} ha sido eliminado`,
+        'Rol Eliminado',
+        `Rol ${role.description} ha sido eliminado`,
         'success'
       );
     });
