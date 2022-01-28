@@ -38,10 +38,7 @@ export class FormReservationComponent implements OnInit {
     this.cargarStateReservation();
   }
 
-  createUpdateVehicle(): void {
-    //  crea el cliente, luego le redirije
-    console.log(this.reservation);
-
+  UpdateReservation(): void {
       this.reservationService.updateUsingPUT2(this.reservation).subscribe((reservation) => {
         Swal.fire(
           'Reserva Actualizado',
@@ -56,8 +53,6 @@ export class FormReservationComponent implements OnInit {
 
   closeModal(): void {
     this.closeModalEvent.emit(!this.show);
-    // this.refreshList.emit();
-    // this.update = false;
   }
 
   refreshListEvent(): void {

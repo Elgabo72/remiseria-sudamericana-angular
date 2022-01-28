@@ -88,7 +88,7 @@
 
         <!-- <input type="hidden" [(ngModel)]="vehicle.idUser" #password="ngModel" name="idUser" /> -->
         <!-- buttons actions -->
-        <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="createUpdateVehicle()"
+        <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="UpdateReservation()"
             [disabled]="!productsForm.form.valid">
             <i class="mr-2 fas fa-save"></i>{{ this.update ? "Actualizar" : "Guardar" }}
         </button>
