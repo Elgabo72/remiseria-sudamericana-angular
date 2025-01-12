@@ -1,0 +1,113 @@
+<div style="text-align: center;">
+    <a class="btn-cerrar" (click)="closeModal()"><span class="material-icons icon"> close </span></a>
+    <form #productsForm="ngForm" id="form" class="row p-4">
+        <div class="col-md-12 grip-colums">
+            <div class="form-group" *ngIf="getVisibility('ocultarInputs')">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Codigo de Viaje </mat-label>
+                    <input matInput value="{{reservation.idReservation}}" name="idReservation" [readonly]="update" />
+                </mat-form-field>
+            </div>
+            <div class="form-group" *ngIf="getVisibility('ocultarInputs')">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Pasajero </mat-label>
+                    <input matInput value="{{reservation.passenger?.firstName}} {{reservation.passenger?.lastName}}"
+                        name="passengerName" [readonly]="update" />
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-form-field appearance="fill" *ngIf="getVisibility('ocultarInputs')">
+                    <mat-label class="block">Origen </mat-label>
+                    <input matInput value="{{reservation.tariff?.origin}}" name="rTariffOrigin" [readonly]="update" />
+                </mat-form-field>
+                
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" *ngIf="getVisibility('ocultarInputs')">
+                    <mat-label class="block">Destino </mat-label>
+                    <input matInput value="{{reservation.tariff?.destination}}" name="rTariffDestination" [readonly]="update" />
+                </mat-form-field>
+                
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" *ngIf="getVisibility('ocultarInputs')">
+                    <mat-label class="block">Fecha y hora de viaje</mat-label>
+                    <input matInput [value]="datePipe.transform(reservation.travelDate, 'dd/MM/yyyy - HH:mm')" name="travelDate" [readonly]="update" />
+                </mat-form-field>
+                <mat-form-field appearance="legacy" class="space-10" *ngIf="!update">
+                    <mat-label class="block">Fecha y hora de viaje </mat-label>
+                    <input matInput maxlength="150" [(ngModel)]="reservation.travelDate" name="travelDate" [readonly]="update"  name="filterInit" required
+                      minlength="1" type="datetime-local" />
+                  </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Description </mat-label>
+                    <input matInput [(ngModel)]="reservation.description" value="{{reservation.description}}" name="description" />
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Seleccionar un chofer</mat-label>
+                    <select matNativeControl required #idUser="ngModel" name="idUser"
+                        [(ngModel)]="reservation.idDriver">
+                        <option [value]="driver.idUser" *ngFor="let driver of drivers">
+                            {{ driver.firstName }} {{ driver.lastName }}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Estado de viaje</mat-label>
+                    <select matNativeControl required #idStateReservation="ngModel" name="stateReservation"
+                        [(ngModel)]="reservation.idStateReservation">
+                        <option [value]="sReservation.idStateReservation" *ngFor="let sReservation of stateReservation">
+                            {{ sReservation.description}}</option>
+                    </select>
+                </mat-form-field>
+
+                <div class="
+              inline-flex
+              items-center
+              p-1
+              px-2
+              my-1
+              text-xs
+              leading-none
+              text-gray-800
+              bg-red-100
+              rounded-full
+              font-weight-bold
+            " *ngIf="idStateReservation.invalid && (idStateReservation.dirty || idStateReservation.touched)">
+                    <div class="" *ngIf="idStateReservation.errors?.required">
+                        Modificar estado
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill" *ngIf="!update">
+                    <mat-label>Seleccionar ruta</mat-label>
+                    <select matNativeControl required #idUser="ngModel" name="idTariff"
+                        [(ngModel)]="reservation.idTariff">
+                        <option [value]="tarifas.idTariff" *ngFor="let tarifas of tariff">
+                            {{ tarifas.origin }} - {{ tarifas.destination}}
+                        </option>
+                    </select>
+                </mat-form-field>
+            </div>
+            
+        </div>
+
+
+
+        <!-- <input type="hidden" [(ngModel)]="vehicle.idUser" #password="ngModel" name="idUser" /> -->
+        <!-- buttons actions -->
+        <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="UpdateReservation()"
+            [disabled]="!productsForm.form.valid">
+            <i class="mr-2 fas fa-save"></i>{{ this.update ? "Actualizar" : "Guardar" }}
+        </button>
+    </form>
+</div>

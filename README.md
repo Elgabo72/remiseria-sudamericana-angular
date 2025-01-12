@@ -1,27 +1,42 @@
-# WebSudamericana
+# Welcome to Remiseria Sudamericana - Argentina 👋
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+> Este proyecto esta creado con fines educativos para aprender las bases a nivel medio de Angular
 
-## Development server
+### 🏠 [Homepage](http://localhost:4200/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### ✨ [Demo](http://localhost:4200/)
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```sh
+npm install
+```
 
-## Build
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```sh
+ng serve -o
+```
 
-## Running unit tests
+## Run tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```sh
+npm run test
+```
 
-## Running end-to-end tests
+## Author
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+👤 **maximopeoficiales**
 
-## Further help
+* Website: https://maximopeoficiales.github.io/chichoproyect/
+* Github: [@maximopeoficiales](https://github.com/maximopeoficiales)
+* LinkedIn: [@https:\/\/www.linkedin.com\/in\/maximo-apaza-5407971b7\/](https://linkedin.com/in/https:\/\/www.linkedin.com\/in\/maximo-apaza-5407971b7\/)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

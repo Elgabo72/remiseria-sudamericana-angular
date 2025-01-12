@@ -1,0 +1,137 @@
+<div style="text-align: center">
+  <a class="btn-cerrar" (click)="closeModal()"><span class="material-icons icon"> close </span></a>
+  <form #productsForm="ngForm" id="form" class="row p-4 justify-content-center">
+    <div class="col-md-12 v-emergente-scroll grip-colums">
+      <div class="form-group">
+        <mat-form-field appearance="fill" >
+          <mat-label class="block">Nombre </mat-label>
+          <input matInput maxlength="150" [(ngModel)]="driver.firstName" #name="ngModel" name="name" required
+            minlength="1" />
+        </mat-form-field>
+        <div class="
+            inline-flex
+            items-center
+            p-1
+            px-2
+            my-1
+            text-xs
+            leading-none
+            text-gray-800
+            bg-red-100
+            rounded-full
+            font-weight-bold
+          " *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div class="" *ngIf="name.errors?.required">
+            Se requiere el nombre
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill" >
+          <mat-label class="block">Apellidos </mat-label>
+          <input matInput maxlength="150" [(ngModel)]="driver.lastName" #lastName="ngModel" name="lastName" required
+            minlength="1" />
+        </mat-form-field>
+        <div class="
+            inline-flex
+            items-center
+            p-1
+            px-2
+            my-1
+            text-xs
+            leading-none
+            text-gray-800
+            bg-red-100
+            rounded-full
+            font-weight-bold
+          " *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+          <div class="" *ngIf="lastName.errors?.required">
+            Se requiere los apellidos
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill" >
+          <mat-label class="block">Dirección </mat-label>
+          <input matInput maxlength="150" [(ngModel)]="driver.address" #address="ngModel" name="address" required
+            minlength="1" />
+        </mat-form-field>
+        <div class="
+            inline-flex
+            items-center
+            p-1
+            px-2
+            my-1
+            text-xs
+            leading-none
+            text-gray-800
+            bg-red-100
+            rounded-full
+            font-weight-bold
+          " *ngIf="address.invalid && (address.dirty || address.touched)">
+          <div class="" *ngIf="address.errors?.required">
+            Se requiere una dirección
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill" >
+          <mat-label class="block">Insert Email</mat-label>
+          <input matInput maxlength="150" [(ngModel)]="driver.email" #email="ngModel" name="email" required
+            minlength="1" type="text" />
+        </mat-form-field>
+        <div class="
+            inline-flex
+            items-center
+            p-1
+            px-2
+            my-1
+            text-xs
+            leading-none
+            text-gray-800
+            bg-red-100
+            rounded-full
+            font-weight-bold
+          " *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div class="" *ngIf="email.errors?.required">Se requiere email</div>
+          <div class="" *ngIf="email.errors?.email">Email no tiene formato</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill" >
+          <mat-label class="block">Teléfono</mat-label>
+          <input matInput maxlength="150" [(ngModel)]="driver.phone" #phone="ngModel" name="phone" required
+            minlength="1" type="number" />
+        </mat-form-field>
+        <div class="
+            inline-flex
+            items-center
+            p-1
+            px-2
+            my-1
+            text-xs
+            leading-none
+            text-gray-800
+            bg-red-100
+            rounded-full
+            font-weight-bold
+          " *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+          <div class="" *ngIf="phone.errors?.required">
+            Se requiere Nro telefonico
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-label>Estado Activo </mat-label>
+        <input type="checkbox" [(ngModel)]="driver.active">
+      </div>
+    </div>
+
+    <input type="hidden" [(ngModel)]="driver.idUser" #password="ngModel" name="idUser" />
+    <!-- buttons actions -->
+    <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="createUpdateDriver()"
+      [disabled]="!productsForm.form.valid">
+      <i class="mr-2 fas fa-save"></i>{{ this.update ? "Actualizar" : "Guardar" }}
+    </button>
+  </form>
+</div>

@@ -1,0 +1,156 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav bg-blue-navbar" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <span class="material-icons icon" style="font-size: 85px">
+        person_pin
+      </span>
+    </mat-toolbar>
+    <div class="admin-name">
+      <p class="unselectable capitalize" style="margin-top: 20px">
+        {{ user.firstName }}
+      </p>
+    </div>
+    <mat-horizontal-stepper class="separator" style="margin-bottom: 20px">
+    </mat-horizontal-stepper>
+    <mat-nav-list>
+      <a class="m-top-5px" mat-list-item class="img-hover unselectable" *ngIf="(user.role?.description=='recepcionista')||(user.role?.description=='admin')">
+        <div class="flex flex-col nav-center">
+          <span class="material-icons icon"> desktop_windows </span>
+          <span class="text-sm t-center text-white">Recepción</span>
+        </div>
+        <div class="hover-popup">
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/reservation">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> event_note </span>
+              <span class="text-sm t-center text-white">Reservas</span>
+            </div>
+          </a>
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/drivers">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> assignment_ind </span>
+              <span class="text-sm t-center text-white">Choferes</span>
+            </div>
+          </a>
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/vehicles">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> directions_car </span>
+              <span class="text-sm t-center text-white">Vehiculos</span>
+            </div>
+          </a>
+        </div>
+      </a>
+      <a class="m-top-5px" mat-list-item class="img-hover unselectable" *ngIf="(user.role?.description=='caja')||(user.role?.description=='admin')">
+        <div class="flex flex-col nav-center">
+          <span class="material-icons icon"> shopping_bag </span>
+          <span class="text-sm t-center text-white">Caja</span>
+        </div>
+        <div class="hover-popup">
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/payments">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> payment </span>
+              <span class="text-sm t-center text-white">Pagos</span>
+            </div>
+          </a>
+        </div>
+      </a>
+      <a class="m-top-5px" mat-list-item class="img-hover unselectable" *ngIf="user.role?.description=='admin'">
+        <div class="flex flex-col nav-center">
+          <span class="material-icons icon"> build </span>
+          <span class="text-sm t-center text-white">Administración</span>
+        </div>
+        <div class="hover-popup">
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/employes">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> person_add </span>
+              <span class="text-sm t-center text-white">Empleados</span>
+            </div>
+          </a>
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/roles">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> category </span>
+              <span class="text-sm t-center text-white">Roles</span>
+            </div>
+          </a>
+          <!-- <a class="m-top-5px" mat-list-item routerLink="/remiseria/drivers">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> assignment_ind </span>
+              <span class="text-sm t-center text-white">Choferes</span>
+            </div>
+          </a>
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/vehicles">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> directions_car </span>
+              <span class="text-sm t-center text-white">Vehiculos</span>
+            </div>
+          </a> -->
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/passengers">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> directions_run </span>
+              <span class="text-sm t-center text-white">Pasajeros</span>
+            </div>
+          </a>
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/tariff">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> attach_money </span>
+              <span class="text-sm t-center text-white">Tarifario</span>
+            </div>
+          </a>
+            
+          <!-- <a class="m-top-5px" mat-list-item routerLink="/admin/order-status">
+            <div class="flex flex-col nav-center">
+              <i class="fas fa-compass icon"></i>
+              <span class="text-sm t-center text-white">Estados de pedido</span>
+            </div>
+          </a>
+          <a class="m-top-5px" mat-list-item routerLink="/admin/document-type">
+            <div class="flex flex-col nav-center">
+              <i class="fas fa-file icon"></i>
+              <span class="text-sm t-center text-white">Documentos de venta</span>
+            </div>
+          </a> -->
+        </div>
+      </a>
+      <a class="m-top-5px" mat-list-item class="img-hover unselectable">
+        <div class="flex flex-col nav-center">
+          <span class="material-icons icon"> settings </span>
+          <span class="text-sm t-center text-white">Configuración</span>
+        </div>
+        <div class="hover-popup">
+          <a class="m-top-5px" mat-list-item routerLink="/remiseria/personalData">
+            <div class="flex flex-col nav-center">
+              <span class="material-icons icon"> manage_accounts </span>
+              <span class="text-sm t-center text-white">Perfil</span>
+            </div>
+          </a>
+        </div>
+      </a>
+      <!-- <a mat-list-item routerLink="/my-account/profile" class="unselectable settings">
+        <div class="flex flex-col nav-center m-auto">
+          <span class="material-icons icon"> settings </span>
+          <span class="text-sm t-center text-white">Editar mi perfil</span>
+        </div>
+      </a> -->
+      
+      <a mat-list-item (click)="loguout()" class="logout unselectable">
+        <div class="flex flex-col nav-center m-auto">
+          <span class="material-icons icon"> logout </span>
+          <span class="text-sm t-center text-white">Cerrar sesión</span>
+        </div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="bg-blue-navbar" style="height: 75px">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>
+        <img src="./../../../../../../assets/LogoBarra.png" alt="" class="imgLogoBarra" />
+      </span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

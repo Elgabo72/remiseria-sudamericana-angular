@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="./login.component.css" />
+<div class="fondo">
+  <div class="contenedorLogin">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <img src="../../../assets/suda_Mesa de trabajo 1 copia 3.png" />
+      <input [formControl]="username" type="text"git   class="inputs" name="username" placeholder="Usuario"/>
+      <div class="alertaError" role="alert" *ngIf="username.touched && username.errors?.required">
+        <strong>* Debe ingresar un usuario.</strong>
+      </div>
+      <div class="alertaError" role="alert" *ngIf="username.touched && username.errors?.maxlength">
+        <strong>
+          * El usuario debe tener 18 caracteres como máximo Prueba de cambio.
+        </strong>
+      </div>
+
+      <input [formControl]="password" type="password" class="inputs" name="pass" placeholder="Contraseña"/>
+      <div class="alertaError" role="alert" *ngIf="password.touched && password.errors?.required">
+        <strong>* Debe ingresar su contraseña. </strong>
+      </div>
+      <div class="alertaError" [innerHTML]="logeoFallido">
+      </div>
+      <button type="submit" class="btnIngresar">
+        <!-- routerLinkActive="active" -->
+        <!-- routerLink="/PanelAdministrador" -->
+        INICIAR SESIÓN
+      </button>
+    </form>
+  </div>
+</div>

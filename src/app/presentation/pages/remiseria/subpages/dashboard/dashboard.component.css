@@ -1,0 +1,101 @@
+.fondo {
+  height: 100vh;
+  width: 100vw;
+  padding: auto;
+}
+.barraMenu {
+  background: rgb(22, 84, 216);
+  padding: 1vh 0;
+  max-height: 15vh;
+  display: flex;
+  align-items: center;
+}
+
+.tituloBarra {
+  font-size: calc(3vh + 1.5vw);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  margin: 0 auto;
+}
+.datosUserBarra {
+  font-size: calc(1vh + 1vw);
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  padding-right: 1.5vw;
+}
+.contenedor {
+  width: 90%;
+  padding: 10vh 0;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.contenedorOpciones {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10vh 2vw;
+}
+.Opciones {
+  /* background: rgb(140, 61, 61); */
+  text-align: center;
+  border-radius: 4%;
+  padding: 2vh;
+  box-shadow: -4px -5px 29px -11px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: -4px -5px 29px -11px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: -4px -5px 29px -11px rgba(0, 0, 0, 0.6);
+}
+.Opciones i {
+  padding: 4vh 4vw;
+  font-size: calc(4vh + 4vw);
+}
+.btnOpcion {
+  background: #2f3946;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 2vh 1vw;
+  width: 100%;
+  border: none;
+  border-radius: 0.55vw;
+  font-size: calc(0.1vh + 1vw);
+  cursor: pointer;
+  transition: ease-in-out 0.4s background-color;
+}
+.btnOpcion:hover {
+  background: #222932;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 1024px) {
+  .imgLogoBarra {
+    display: none;
+  }
+  .datosUserBarra {
+    display: none;
+  }
+  .contenedorOpciones {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10vh 4vw;
+  }
+  .Opciones {
+    max-width: 25vw;
+    min-width: 25vw;
+  }
+  .Opciones i {
+    padding: 4vh 4vw;
+    font-size: calc(4vh + 4vw);
+  }
+  .btnOpcion {
+    font-size: calc(1vh + 1vw);
+  }
+}
+@media only screen and (min-width: 200px) and (max-width: 600px) {
+  .contenedorOpciones {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10vh 4vw;
+  }
+  .Opciones {
+    max-width: 35vw;
+    min-width: 35vw;
+  }
+}

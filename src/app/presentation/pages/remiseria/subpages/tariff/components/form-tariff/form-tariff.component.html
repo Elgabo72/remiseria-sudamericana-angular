@@ -1,0 +1,89 @@
+<div style="text-align: center">
+    <a class="btn-cerrar" (click)="closeModal()"><span class="material-icons icon"> close </span></a>
+    <form #productsForm="ngForm" id="form" class="row p-4 justify-content-center">
+        <div class="col-md-12 v-emergente-scroll grip-colums">
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Origen</mat-label>
+                    <input matInput maxlength="150" [(ngModel)]="data.origin" #origin="ngModel" name="origin" required
+                        minlength="1" />
+                </mat-form-field>
+                <div class="
+                inline-flex
+                items-center
+                p-1
+                px-2
+                my-1
+                text-xs
+                leading-none
+                text-gray-800
+                bg-red-100
+                rounded-full
+                font-weight-bold
+              " *ngIf="origin.invalid && (origin.dirty || origin.touched)">
+                    <div class="" *ngIf="origin.errors?.required">
+                        Se requiere un Origen
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Monto</mat-label>
+                    <input matInput maxlength="150" min="10" [(ngModel)]="data.amount" #amount="ngModel" name="amount" required
+                        minlength="1" type="number" />
+                </mat-form-field>
+                <div class="
+                inline-flex
+                items-center
+                p-1
+                px-2
+                my-1
+                text-xs
+                leading-none
+                text-gray-800
+                bg-red-100
+                rounded-full
+                font-weight-bold
+              " *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+                    <div class="" *ngIf="amount.errors?.required">
+                        Se requiere un Monto
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Destino</mat-label>
+                    <input matInput maxlength="150" [(ngModel)]="data.destination" #destination="ngModel"
+                        name="destination" required minlength="1" />
+                </mat-form-field>
+                <div class="
+                inline-flex
+                items-center
+                p-1
+                px-2
+                my-1
+                text-xs
+                leading-none
+                text-gray-800
+                bg-red-100
+                rounded-full
+                font-weight-bold
+              " *ngIf="destination.invalid && (destination.dirty || destination.touched)">
+                    <div class="" *ngIf="destination.errors?.required">
+                        Se requiere un Destino
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-label>Estado Activo </mat-label>
+                <input type="checkbox" [(ngModel)]="data.active">
+            </div>
+        </div>
+        <input type="hidden" [(ngModel)]="data.idTariff" #password="ngModel" name="idTariff" />
+        <!-- buttons actions -->
+        <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="createUpdateTariff()"
+            [disabled]="!productsForm.form.valid || data.amount==0">
+            <i class="mr-2 fas fa-save"></i>{{ this.update ? "Actualizar" : "Guardar" }}
+        </button>
+    </form>
+</div>

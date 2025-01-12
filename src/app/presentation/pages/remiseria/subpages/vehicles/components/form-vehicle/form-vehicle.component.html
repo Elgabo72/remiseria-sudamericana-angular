@@ -1,0 +1,169 @@
+<div style="text-align: center">
+    <a class="btn-cerrar" (click)="closeModal()"><span class="material-icons icon"> close </span></a>
+    <form #productsForm="ngForm" id="form" class="row p-4">
+        <div class="col-md-12 v-emergente-scroll grip-colums">
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Descripción </mat-label>
+                    <input matInput maxlength="150" [(ngModel)]="vehicle.description" #description="ngModel"
+                        name="description" required minlength="1" />
+                </mat-form-field>
+                <div class="
+              inline-flex
+              items-center
+              p-1
+              px-2
+              my-1
+              text-xs
+              leading-none
+              text-gray-800
+              bg-red-100
+              rounded-full
+              font-weight-bold
+            " *ngIf="description.invalid && (description.dirty || description.touched)">
+                    <div class="" *ngIf="description.errors?.required">
+                        Se requiere una descripción
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Marca </mat-label>
+                    <input matInput maxlength="150" [(ngModel)]="vehicle.mark" #mark="ngModel" name="mark" required
+                        minlength="1" />
+                </mat-form-field>
+                <div class="
+              inline-flex
+              items-center
+              p-1
+              px-2
+              my-1
+              text-xs
+              leading-none
+              text-gray-800
+              bg-red-100
+              rounded-full
+              font-weight-bold
+            " *ngIf="mark.invalid && (mark.dirty || mark.touched)">
+                    <div class="" *ngIf="mark.errors?.required">
+                        Se requiere la marca
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Modelo </mat-label>
+                    <input matInput maxlength="150" [(ngModel)]="vehicle.model" #model="ngModel" name="model" required
+                        minlength="1" />
+                </mat-form-field>
+                <div class="
+              inline-flex
+              items-center
+              p-1
+              px-2
+              my-1
+              text-xs
+              leading-none
+              text-gray-800
+              bg-red-100
+              rounded-full
+              font-weight-bold
+            " *ngIf="model.invalid && (model.dirty || model.touched)">
+                    <div class="" *ngIf="model.errors?.required">
+                        Se requiere un modelo
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label class="block">Placa </mat-label>
+                    <input matInput maxlength="150" [(ngModel)]="vehicle.plaque" #plaque="ngModel" name="plaque"
+                        required minlength="1" />
+                </mat-form-field>
+                <div class="
+              inline-flex
+              items-center
+              p-1
+              px-2
+              my-1
+              text-xs
+              leading-none
+              text-gray-800
+              bg-red-100
+              rounded-full
+              font-weight-bold
+            " *ngIf="plaque.invalid && (plaque.dirty || plaque.touched)">
+                    <div class="" *ngIf="plaque.errors?.required">
+                        Se requiere nro de placa
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Seleccionar un chofer</mat-label>
+                    <select matNativeControl required #idUser="ngModel" name="idUser" [(ngModel)]="vehicle.idUser">
+                        <option [value]="driver.idUser" *ngFor="let driver of drivers">
+                            {{ driver.firstName }} {{ driver.lastName }}
+                        </option>
+                    </select>
+                </mat-form-field>
+
+                <div class="
+              inline-flex
+              items-center
+              p-1
+              px-2
+              my-1
+              text-xs
+              leading-none
+              text-gray-800
+              bg-red-100
+              rounded-full
+              font-weight-bold
+            " *ngIf="idUser.invalid && (idUser.dirty || idUser.touched)">
+                    <div class="" *ngIf="idUser.errors?.required">
+                        Se requiere un chofer
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <mat-label>Estado Activo </mat-label>
+                <input type="checkbox" [(ngModel)]="vehicle.active">
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Tipo de vehiculo</mat-label>
+                    <select matNativeControl required #type="ngModel" name="type" [(ngModel)]="vehicle.type">
+                        <option value="{{tv}}" *ngFor="let tv of typeVehicle">{{tv}}</option>
+                    </select>
+                </mat-form-field>
+
+                <div class="
+                  inline-flex
+                  items-center
+                  p-1
+                  px-2
+                  my-1
+                  text-xs
+                  leading-none
+                  text-gray-800
+                  bg-red-100
+                  rounded-full
+                  font-weight-bold
+                " *ngIf="idUser.invalid && (idUser.dirty || idUser.touched)">
+                    <div class="" *ngIf="idUser.errors?.required">
+                        Se requiere un tipo de vehiculo
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <input type="hidden" [(ngModel)]="vehicle.idUser" #password="ngModel" name="idUser" />
+        <!-- buttons actions -->
+        <button mat-flat-button color="primary" class="text-white w-100 h6" (click)="createUpdateVehicle()"
+            [disabled]="!productsForm.form.valid">
+            <i class="mr-2 fas fa-save"></i>{{ this.update ? "Actualizar" : "Guardar" }}
+        </button>
+    </form>
+</div>

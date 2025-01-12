@@ -1,0 +1,118 @@
+.fondo {
+  text-align: center;
+  background-image: url("./../../../../assets/buenosAiresNoche2.jpg");
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  border: 0;
+}
+.contenedorLogin {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 20rem;
+  background-color: rgba(255, 255, 255, 0.946);
+  text-align: center;
+  margin: 4% auto;
+  padding: 1%;
+  display: block;
+}
+.inputs {
+  border: 0;
+  max-width: 80%;
+  min-width: 80%;
+  background: transparent;
+  border-bottom: 0.3vh solid rgb(196, 196, 196);
+  margin: 10% auto 1% auto;
+  padding: 2% 2%;
+  outline: none;
+  display: block;
+  font-size: calc(1vh + 1vw);
+}
+.inputs:focus {
+  border-bottom: 2px solid rgb(22, 84, 216);
+}
+.btnIngresar {
+  margin: 20% 10% 5% 10%;
+  padding: 2% 10%;
+  background: rgb(22, 84, 216);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: calc(0.8vh + 0.8vw);
+}
+.btnIngresar:hover {
+  background: rgba(22, 83, 216, 0.878);
+}
+img {
+  max-width: 100%;
+  max-height: 40vh;
+  display: block;
+  margin: 1% auto;
+}
+.alertaError {
+  color: rgb(196, 5, 5);
+  font-size: calc(0.1rem + 1vw);
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  max-width: 80%;
+  min-width: 80%;
+  margin: auto;
+  padding: 1%;
+  font-style: italic;
+}
+@media only screen and (min-width: 200px) and (max-width: 550px) and (max-height: 850px) {
+  .contenedorLogin {
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    margin: 0;
+    padding: 1%;
+    display: block;
+  }
+  .inputs {
+    font-size: calc(2vh + 2vw);
+    margin: 8% auto 2% auto;
+  }
+  .btnIngresar {
+    font-size: calc(2vh + 2vw);
+    margin: 10% 10% 5% 10%;
+  }
+  .alertaError {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1200px) and (min-height: 1000px) {
+  .contenedorLogin {
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    margin: 0;
+    padding: 1%;
+    display: block;
+  }
+  .inputs {
+    font-size: calc(2vh + 2vw);
+    margin: 8% auto 2% auto;
+  }
+  .btnIngresar {
+    font-size: calc(2vh + 2vw);
+    margin: 5% 10% 5% 10%;
+  }
+  .alertaError {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  .contenedorLogin {
+    width: calc(1vh + 25vw);
+  }
+}

@@ -1,0 +1,49 @@
+<app-header-custom title="Administracion de" subtitle="Reservaciones">
+  <span class="material-icons icon"> event_note </span>
+</app-header-custom>
+<div class="d-flex align-items-center justify-content-between mx-2">
+  <select class="CbxStateReservarion" #selectList (change)="refreshListFilter(selectList.value)">
+    <option value="" selected="selected">--- Filtrar Reservas ---</option>
+    <option *ngFor="let DstatusReservation of stateReservation" value="{{ DstatusReservation.idStateReservation }}">
+      {{ DstatusReservation.description }}
+    </option>
+  </select>
+  <app-filter-date-form (submit)="filterForDate($event)" (resetFilter)="resetDateFilter()"></app-filter-date-form>
+  
+  <button class="btn-export-excel" (click)="downloadExcel()" *ngIf="!showSpinner">
+    <i class="fa fa-file-excel mx-1" aria-hidden="true"></i> Descargar Excel
+  </button>
+</div>
+<app-spinner [show]="showSpinner"></app-spinner>
+<div class="just-center">
+  <div class="vtn-emergente" [ngStyle]="{ display: activeModal ? 'block' : 'none' }">
+    <app-form-reservation [show]="activeModal" [update]="activeUpdated" [reservation]="currentReservation"
+      (refreshList)="refreshList()" (closeModalEvent)="closeModal($event)"></app-form-reservation>
+  </div>
+</div>
+
+<div class="cont-reservas {{ ocultado }}" onload="asignarColor()">
+  <div class="cont-card-reservas">
+    <div class="card-reservas" *ngFor="let Dreserva of reservationList">
+      <a class="c-card-reserva" [ngStyle]="{
+          background: getColor(Dreserva.stateReservation?.description)
+        }">{{ Dreserva.stateReservation?.description }}</a>
+      <label class="lbl-card-detalle">Codigo: {{ Dreserva.idReservation }}</label>
+      <label class="lbl-card-detalle">Origen: {{ Dreserva.tariff?.origin }}</label>
+      <label class="lbl-card-detalle">Destino: {{ Dreserva.tariff?.destination }}</label>
+      <button class="btnDetalleReserva" (click)="editReservationInModal(Dreserva)">
+        Ver Detalle
+      </button>
+    </div>
+  </div>
+</div>
+<div class="mgn-top_button t-center positionButton">
+  <a
+    mat-flat-button
+    color="primary"
+    class="my-2 text-white text-decoration-none"
+    (click)="handlerClickRegister()"
+  >
+  Nueva Reserva
+  </a>
+</div>
